@@ -1,9 +1,9 @@
 namespace DungeonMaster
 {
-    public class GameFunctions
+    public class Visuals
     {
-        // Typewriter Effect
-        public void DisplayMessage(string message)
+        // Typewriter Visual
+        public static void DisplayMessage(string message)
         {
             for (int i = 0; i < message.Length; i++)
             {

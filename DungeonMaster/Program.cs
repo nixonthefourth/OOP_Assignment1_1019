@@ -4,11 +4,8 @@
     {
         static void Main(string[] args)
         {
-            // Variables
-            string welcomeMessage = "Welcome to Dungeon Master! \n";
-            
-            GameFunctions game = new GameFunctions();
-            game.DisplayMessage(welcomeMessage.ToUpper());
+            GameLoop startGame = new GameLoop();
+            startGame.Game();
         }
     }
 }
