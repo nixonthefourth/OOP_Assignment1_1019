@@ -6,6 +6,10 @@ namespace DungeonMaster
         public string WelcomeMessage { get; set; }
         public bool GameEnded { get; set; }
         
+        // Game Inventory
+        // Weapons
+        private string[] GameWeapon { get; set; }
+        
         // Game Loop
         public void Game()
         {
@@ -17,11 +21,14 @@ namespace DungeonMaster
             // Output the Entrance
             Visuals.DisplayMessage(WelcomeMessage.ToUpper());
             
-            // Set the username
+            // Setters
+            // Player
             Player thePlayer = new Player();
             thePlayer.SetUserName();
             thePlayer.SetHealth();
             thePlayer.SetInventory();
+            
+            // Weapons
         }
     }
 }

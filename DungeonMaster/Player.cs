@@ -6,6 +6,7 @@ namespace DungeonMaster
         public string PlayerItems { get; set; }
         public string UserName { get; set; }
         public string UserNameMessage { get; private set; }
+        public string PlayerWeapons { get; set; }
 
         // Set Username
         public void SetUserName()
@@ -32,6 +33,18 @@ namespace DungeonMaster
         public void SetInventory()
         {
             PlayerItems = "Empty Inventory";
+        }
+        
+        // Set Player's Damage
+        public void SetWeapons()
+        {
+            PlayerWeapons = "Empty Weapons";
+        }
+        
+        // Damage Someone
+        public int DamageEnemy(int enemyHealth, int playerDamage, string playerWeapon)
+        {
+            return 0;
         }
     }
 }

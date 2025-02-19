@@ -1,6 +1,6 @@
 namespace DungeonMaster
 {
-    public class Rooms
+    public class Potions
     {
         
     }
