@@ -1,7 +1,7 @@
 namespace DungeonMaster
 {
-    public class Player
+    public class Enemies
     {
-        
+    
     }
 }
