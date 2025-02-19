@@ -5,27 +5,27 @@ namespace DungeonMaster
         // Variables
         private bool AdventureConfirmation { get; set; }
         public string AdventureActionName { get; set; }
+        public string[] AdventureActions { get; private set; }
         
         // Welcome Message
         public void Welcome()
         {
-            Helper.DisplayMessage("Welcome to DungeonMaster!".ToUpper());
-            Console.WriteLine();
+            Helper.DisplayMessage("Welcome to DungeonMaster! \n \n".ToUpper());
         }
         
         // Pre-Story
         public void StartStory()
         {
             // Text Lines
-            Helper.DisplayMessage("***".ToUpper());
-            Helper.DisplayMessage("Long time ago...".ToUpper());
-            Helper.DisplayMessage("In a far-far galaxy.".ToUpper());
-            Helper.DisplayMessage("The star of all was born.".ToUpper());
-            Helper.DisplayMessage("Hence, it's up to a mighty hero to find it.".ToUpper());
-            Helper.DisplayMessage("***".ToUpper());
+            Helper.DisplayMessage("*** \n".ToUpper());
+            Helper.DisplayMessage("Long time ago... \n".ToUpper());
+            Helper.DisplayMessage("In a far-far galaxy. \n".ToUpper());
+            Helper.DisplayMessage("The star of all was born. \n".ToUpper());
+            Helper.DisplayMessage("Hence, it's up to a mighty hero to find it. \n".ToUpper());
+            Helper.DisplayMessage("*** \n".ToUpper());
             
             // Waiting Timer
-            System.Threading.Thread.Sleep(300);
+            System.Threading.Thread.Sleep(3000);
             
             // Clear the Console
             Console.Clear();
@@ -34,7 +34,14 @@ namespace DungeonMaster
         // Output Character's Name (Input Confirmation)
         public void CharacterNameConfirmation(string characterName)
         {
-            Helper.DisplayMessage($"Welcome, {characterName}.".ToUpper());
+            Helper.DisplayMessage($"Welcome, {characterName}. \n".ToUpper());
+            Console.WriteLine();
+            
+            // Wait
+            System.Threading.Thread.Sleep(3000);
+            
+            // Clear Console
+            Console.Clear();
         }
         
         // Get User's Confirmation On Any Action
@@ -44,7 +51,7 @@ namespace DungeonMaster
             while (true)
             {
                 // Entry Message
-                Helper.DisplayMessage($"Are you ready for {actionName}? Y/N".ToUpper());
+                Helper.DisplayMessage($"Are you ready for {actionName}? Y/N ".ToUpper());
                 string adventureConfirmationInput = Console.ReadLine();
                 
                 // Actual Validator
@@ -62,13 +69,41 @@ namespace DungeonMaster
 
                 else
                 {
-                    Helper.DisplayMessage("Sorry, didn't quite get that".ToUpper());
+                    Helper.DisplayMessage("Sorry, didn't quite get that \n".ToUpper());
                     AdventureConfirmation = false;
                 }
             }
             
             // Return
             return AdventureConfirmation;
+        }
+        
+        // Set Adventure Actions
+        public string SetAdventureActions()
+        {
+            AdventureActions = new string[] { "Fight", "Item Search", "Exit Search", "Dwell" };
+            
+            // Define Random Integers
+            Random rnd = new Random();
+            int index = rnd.Next(0, 4);
+            
+            // Assigns a Random Value For The Action
+            AdventureActionName = AdventureActions[index];
+            
+            return AdventureActionName;
+        }
+        
+        // Losing Sequence
+        public void LoseAdventure()
+        {
+            Helper.DisplayMessage($"You finished the adventure! \n".ToUpper());
+            Helper.DisplayMessage($"By being killed...".ToUpper());
+        }
+        
+        // Winning Sequence
+        public void WinAdventure()
+        {
+            Helper.DisplayMessage($"You finished the adventure!".ToUpper());
         }
     }
 }
