@@ -70,7 +70,6 @@ namespace DungeonMaster
                 else
                 {
                     Helper.DisplayMessage("Sorry, didn't quite get that \n".ToUpper());
-                    AdventureConfirmation = false;
                 }
             }
             
