@@ -3,6 +3,7 @@ namespace DungeonMaster
     public class Inventory
     {
         // Variables
+        
         // Weapons
         public string WeaponName { get; set; }
         public int WeaponDamage { get; set; }
@@ -12,7 +13,9 @@ namespace DungeonMaster
         public int PotionDamage { get; set; }
         
         // Methods
+        
         // Setters
+        
         // Weapons
         public void SetRoomWeapon(string weaponName, int weaponDamage)
         {

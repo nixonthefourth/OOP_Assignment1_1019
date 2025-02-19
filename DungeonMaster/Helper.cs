@@ -1,6 +1,6 @@
 namespace DungeonMaster
 {
-    public class Visuals
+    public class Helper
     {
         // Typewriter Visual
         public static void DisplayMessage(string message)
