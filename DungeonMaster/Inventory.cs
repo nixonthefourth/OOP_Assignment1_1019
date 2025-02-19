@@ -1,6 +1,6 @@
 namespace DungeonMaster
 {
-    public class Weapons
+    public class Inventory
     {
         // Variables
         // Weapons
@@ -8,6 +8,7 @@ namespace DungeonMaster
         public int WeaponDamage { get; set; }
         
         // Methods
+        // Weapons
         public void SetRoomWeapon(string weaponName, int weaponDamage)
         {
             // Checks for the absence of the parameters
