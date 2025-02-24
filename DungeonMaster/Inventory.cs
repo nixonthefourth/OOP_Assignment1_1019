@@ -6,7 +6,6 @@ namespace DungeonMaster
         
         // Weapons
         public string WeaponName { get; set; }
-        public int WeaponDamage { get; set; }
         
         // Potions
         public string PotionName { get; set; }
@@ -17,7 +16,7 @@ namespace DungeonMaster
         // Setters
         
         // Weapons
-        public void SetRoomWeapon(string weaponName, int weaponDamage)
+        public void SetRoomWeapon(string weaponName)
         {
             // Checks for the absence of the parameters
             // Name Check
@@ -26,19 +25,11 @@ namespace DungeonMaster
                 Console.WriteLine("System Error | Weapon Undefined");
                 System.Environment.Exit(1);
             }
-            
-            // Damage Value Check
-            else if (weaponDamage == null || weaponDamage == 0)
-            {
-                Console.WriteLine("System Error | Damage Undefined");
-                System.Environment.Exit(1);
-            }
 
             // Otherwise, we set the values assigned
             else
             {
-                weaponDamage = WeaponDamage;
-                weaponName = WeaponName;
+                WeaponName = weaponName;
             }
         }
         
@@ -66,6 +57,16 @@ namespace DungeonMaster
                 potionName = PotionName;
                 potionDamage = PotionDamage;
             }
+        }
+        
+        // Getters
+        
+        // Weapons
+        
+        // Name
+        public string GetWeaponName()
+        {
+            return WeaponName;
         }
     }
 }

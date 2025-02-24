@@ -25,9 +25,10 @@ namespace DungeonMaster
 
                 // End Game Check
                 if (_player.PlayerHealth == 0)
-                {
+                { 
                     _story.LoseAdventure();
                 }
+                
                 else if (newRoom1.ExitFound)
                 {
                     _story.WinAdventure();
@@ -63,25 +64,39 @@ namespace DungeonMaster
             // Fight
             if (adventureConfirmation && adventureAction == _story.AdventureActions[0])
             {
+                // Clear Previous Lines
+                Console.Clear();
                 
+                // Set Player's Weapon
+                string userWeapon = _inventory.GetWeaponName();
+                _player.SetPlayerDamage(userWeapon);
             }
             
             // Looking For Items
             else if (adventureConfirmation && adventureAction == _story.AdventureActions[1])
             {
+                // Clear Previous Lines
+                Console.Clear();
+                
                 Helper.DisplayMessage("Item Found!".ToUpper());
-                _inventory.SetRoomWeapon("Sword", 20);
+                _inventory.SetRoomWeapon("Sword");
             }
             
             // Looking For Exit
             else if (adventureConfirmation && adventureAction == _story.AdventureActions[2])
             {
+                // Clear Previous Lines
+                Console.Clear();
+                
                 Console.WriteLine("Empty Action");
             }
             
-            // Skip
+            // Dwelling
             else if (adventureConfirmation && adventureAction == _story.AdventureActions[3])
             {
+                // Clear Previous Lines
+                Console.Clear();
+                
                 // Set A Random Message For Dwelling
                 Random randomIndex = new Random();
                 string dwellMessage1 = "Thinking about Plato. \n \n";
