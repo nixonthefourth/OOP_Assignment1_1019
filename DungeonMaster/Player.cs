@@ -5,6 +5,7 @@ namespace DungeonMaster
         // Varaibles
         public string PlayerName { get; private set; }
         public int PlayerHealth { get; private set; }
+        public int PlayerDamage { get; private set; }
         
         // Methods
         
@@ -31,6 +32,48 @@ namespace DungeonMaster
         {
             PlayerHealth = playerHealth;
             return PlayerHealth;
+        }
+        
+        // Damage
+        
+        // Set Player's Damage
+        public int SetPlayerDamage(string weaponName)
+        {
+            // Selects The In-Game Weapon
+            if (weaponName == "Sword")
+            {
+                PlayerDamage = 20;
+            }
+            
+            else if (weaponName == "Axe")
+            {
+                PlayerDamage = 40;
+            }
+
+            else
+            {
+                PlayerDamage = 00;
+            }
+            
+            // Return
+            return PlayerDamage;
+        }
+        
+        // Actions
+        
+        // Damage Enemy
+        public int DamageEnemy(int enemyHealth, int playerDamage)
+        {
+            enemyHealth -= playerDamage;
+
+            // Checks Whether Enemy Is Alive
+            if (enemyHealth <= 0)
+            {
+                Helper.DisplayMessage("Enemy is dead!".ToUpper());
+            }
+            
+            // Returns Enemy's Health
+            return enemyHealth;
         }
     }
 }
