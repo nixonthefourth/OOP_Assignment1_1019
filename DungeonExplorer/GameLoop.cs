@@ -21,6 +21,8 @@ namespace DungeonExplorer
 
                 // TODO – Create 5 Instances Of Room.cs
                 // TODO – Link Rooms.cs
+                
+                // TODO – Think About Error Checking
                 // Checking Sequence
                 // End Game Check
                 if (_player.PlayerHealth == 0)

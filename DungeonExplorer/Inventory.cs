@@ -15,8 +15,6 @@ namespace DungeonExplorer
         
         // Setters
         
-        // TODO – Create A Setter That Defines The Probability Of An Enemy
-        
         // Weapons
         public void SetRoomWeapon(string weaponName)
         {

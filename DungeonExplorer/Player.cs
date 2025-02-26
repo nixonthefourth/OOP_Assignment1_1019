@@ -9,6 +9,7 @@ namespace DungeonExplorer
         
         // Methods
         
+        // TODO – Create Method To Pick Up An Item
         // TODO – Create Method To Assign Found Item To Inventory
         // TODO – Link Inventory.cs
         
