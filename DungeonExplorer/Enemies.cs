@@ -1,4 +1,4 @@
-namespace DungeonMaster
+namespace DungeonExplorer
 {
     public class Enemies
     {

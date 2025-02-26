@@ -1,7 +1,8 @@
-namespace DungeonMaster
+namespace DungeonExplorer
 {
     public class Story
     {
+        // TODO – Restructure Text Document
         // Variables
         private bool AdventureConfirmation { get; set; }
         public string AdventureActionName { get; set; }
@@ -10,7 +11,7 @@ namespace DungeonMaster
         // Welcome Message
         public void Welcome()
         {
-            Helper.DisplayMessage("Welcome to DungeonMaster! \n \n".ToUpper());
+            Helper.DisplayMessage("Welcome to DungeonExplorer! \n \n".ToUpper());
         }
         
         // Pre-Story
@@ -116,5 +117,7 @@ namespace DungeonMaster
             Random rnd = new Random();
             
         }
+        
+        // TODO – Create Room Messages
     }
 }

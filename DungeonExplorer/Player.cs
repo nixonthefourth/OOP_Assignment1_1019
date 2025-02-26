@@ -1,4 +1,4 @@
-namespace DungeonMaster
+namespace DungeonExplorer
 {
     public class Player
     {
@@ -8,6 +8,9 @@ namespace DungeonMaster
         public int PlayerDamage { get; private set; }
         
         // Methods
+        
+        // TODO – Create Method To Assign Found Item To Inventory
+        // TODO – Link Inventory.cs
         
         // Getters
         

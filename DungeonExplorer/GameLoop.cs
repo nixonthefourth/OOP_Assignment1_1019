@@ -1,4 +1,4 @@
-namespace DungeonMaster
+namespace DungeonExplorer
 {
     public class GameLoop
     {
@@ -19,17 +19,16 @@ namespace DungeonMaster
             {
                 AdventureLoad();
 
-                // Checks
-                // Creates New Room Object
-                Rooms newRoom1 = new Rooms();
-
+                // TODO – Create 5 Instances Of Room.cs
+                // TODO – Link Rooms.cs
+                // Checking Sequence
                 // End Game Check
                 if (_player.PlayerHealth == 0)
                 { 
                     _story.LoseAdventure();
                 }
                 
-                else if (newRoom1.ExitFound)
+                else if (_rooms.ExitFound)
                 {
                     _story.WinAdventure();
                     break;
