@@ -1,11 +1,24 @@
+using System.Threading.Channels;
+
 namespace DungeonExplorer
 {
     public class GameLoop
     {
+        /*
+        There Is 1 Global Player, Hence _player Is Set
+        
+        There Is 1 Related Global Story That Is
+        Referenced Across All The Files, Hence There Is 1 Public instance _story
+        */
+        
+        /*
+        Rooms and Enemies Have Singular Instances Due To The testing Purposes.
+        This Will Be Changed Later For The Population Purposes.
+        */
+        
         Player _player = new Player();
         Story _story = new Story();
         Rooms _rooms = new Rooms();
-        Inventory _inventory = new Inventory();
         Enemies _enemy = new Enemies();
         
         // Game Loop
@@ -67,10 +80,8 @@ namespace DungeonExplorer
             {
                 // Clear Previous Lines
                 Console.Clear();
-                
-                // Set Player's Weapon
-                string userWeapon = _inventory.GetWeaponName();
-                _player.SetPlayerDamage(userWeapon);
+
+                Console.WriteLine("Empty Action");
             }
             
             // Looking For Items
@@ -78,9 +89,8 @@ namespace DungeonExplorer
             {
                 // Clear Previous Lines
                 Console.Clear();
-                
-                Helper.DisplayMessage("Item Found!".ToUpper());
-                _inventory.SetRoomWeapon("Sword");
+
+                Console.WriteLine("Empty Action");
             }
             
             // Looking For Exit
@@ -98,17 +108,8 @@ namespace DungeonExplorer
                 // Clear Previous Lines
                 Console.Clear();
                 
-                // Set A Random Message For Dwelling
-                Random randomIndex = new Random();
-                string dwellMessage1 = "Thinking about Plato. \n \n";
-                string dwellMessage2 = "Answer is 42! \n \n";
-                string dwellMessage3 = "Mighty knights might do something tonight. \n \n";
-                
-                // Append An Array
-                string[] dwellMessage = new string[] { dwellMessage1, dwellMessage2, dwellMessage3 };
-                
-                // Select The Displayed Message
-                Helper.DisplayMessage(dwellMessage[randomIndex.Next(dwellMessage.Length)].ToUpper());
+                // Call Messages
+                _story.DwellingMessages();
             }
         }
     }

@@ -6,12 +6,11 @@ namespace DungeonExplorer
         public string PlayerName { get; private set; }
         public int PlayerHealth { get; private set; }
         public int PlayerDamage { get; private set; }
+        public string PlayerInventoryItem { get; private set; }
         
         // Methods
         
-        // TODO – Create Method To Pick Up An Item
-        // TODO – Create Method To Assign Found Item To Inventory
-        // TODO – Link Inventory.cs
+        // TODO – Link Files
         
         // Getters
         
@@ -41,26 +40,10 @@ namespace DungeonExplorer
         // Damage
         
         // Set Player's Damage
-        public int SetPlayerDamage(string weaponName)
+        public int SetPlayerDamage()
         {
-            // Selects The In-Game Weapon
-            if (weaponName == "Sword")
-            {
-                PlayerDamage = 20;
-            }
-            
-            else if (weaponName == "Axe")
-            {
-                PlayerDamage = 40;
-            }
-
-            else
-            {
-                PlayerDamage = 00;
-            }
-            
             // Return
-            return PlayerDamage;
+            return PlayerDamage = 0;
         }
         
         // Actions
@@ -78,6 +61,44 @@ namespace DungeonExplorer
             
             // Returns Enemy's Health
             return enemyHealth;
+        }
+        
+        // Pick Up An Inventory Item
+        public void PickPlayerItem(string itemName)
+        {
+            // Changes Parameters & Stats Of The Player
+            // Void, Since Data Is Assigned, Rather Than Retrieved
+
+            // Assigning Items
+            // Weapons
+            // If Sword Is Found
+            if (itemName == "Sword")
+            {
+                PlayerDamage = 20;
+                PlayerInventoryItem = itemName;
+            }
+            
+            // If Axe Is Found
+            else if (itemName == "Axe")
+            {
+                PlayerDamage = 40;
+                PlayerInventoryItem = itemName;
+            }
+            
+            // Setting Potions
+            // Healing
+            else if (itemName == "Cheeky Potion")
+            {
+                // Full Regeneration For Simplicity's Sake
+                PlayerHealth = 100;
+            }
+            
+            // The Damaging One
+            else if (itemName == "Potion of Biggleswade")
+            {
+                // This Is What Happens If You Go To Biggleswade
+                PlayerHealth -= 20;
+            }
         }
     }
 }
