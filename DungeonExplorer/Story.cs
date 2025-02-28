@@ -2,11 +2,14 @@ namespace DungeonExplorer
 {
     public class Story
     {
-        // TODO – Restructure Text Document
         // Variables
         private bool AdventureConfirmation { get; set; }
         public string AdventureActionName { get; set; }
         public string[] AdventureActions = new string[] { "Fight", "Item Search", "Exit Search", "Dwelling" };
+        
+        // START OF STORY
+        // START OF STORY
+        // START OF STORY
         
         // Welcome Message
         public void Welcome()
@@ -45,6 +48,10 @@ namespace DungeonExplorer
             Console.Clear();
         }
         
+        // USER ACTIONS
+        // USER ACTIONS
+        // USER ACTIONS
+
         // Get User's Confirmation On Any Action
         public bool AdventureAction(string actionName)
         {
@@ -78,6 +85,10 @@ namespace DungeonExplorer
             return AdventureConfirmation;
         }
         
+        // GAME SEQUENCES
+        // GAME SEQUENCES
+        // GAME SEQUENCES
+
         // Set Adventure Actions
         public string SetAdventureActions()
         {
@@ -118,7 +129,22 @@ namespace DungeonExplorer
             
         }
         
-        // TODO – Create Room Messages
+        // Room Messages
+        public void RoomMessages()
+        {
+            // Set A Random Message For The Room
+            Random randomIndex = new Random();
+
+            string roomMessage1 = "You are walking around dark dungeons of Stevenage \n \n";
+            string roomMessage2 = "Something has creaked... \n \n";
+            string roomMessage3 = "Your wife might call you any time. \n \n";
+            
+            // Append An Array
+            string[] roomMessage = new string[] { roomMessage1, roomMessage2, roomMessage3 };
+                
+            // Select The Displayed Message Randomly
+            Helper.DisplayMessage(roomMessage[randomIndex.Next(roomMessage.Length)].ToUpper());
+        }
         
         // Dwelling Messages
         public void DwellingMessages()
@@ -132,7 +158,7 @@ namespace DungeonExplorer
             // Append An Array
             string[] dwellMessage = new string[] { dwellMessage1, dwellMessage2, dwellMessage3 };
                 
-            // Select The Displayed Message
+            // Select The Displayed Message Randomly
             Helper.DisplayMessage(dwellMessage[randomIndex.Next(dwellMessage.Length)].ToUpper());
         }
     }

@@ -18,7 +18,6 @@ namespace DungeonExplorer
         
         Player _player = new Player();
         Story _story = new Story();
-        Rooms _rooms = new Rooms();
         Enemies _enemy = new Enemies();
         
         // Game Loop
@@ -27,15 +26,26 @@ namespace DungeonExplorer
             // Initialises Adventure
             AdventureInit();
             
+            // TODO – Link Rooms.cs Somehow
+            
+            // Creating Rooms
+            Rooms room1 = new Rooms();
+            Rooms room2 = new Rooms();
+            Rooms room3 = new Rooms();
+            Rooms room4 = new Rooms();
+            
+            // This Room Is Universally Set To Be The One With An Exit
+            Rooms room5 = new Rooms();
+
+            
             // Works Through While Loop, Unless Player Dies or Finds Exit
             while (true)
             {
                 AdventureLoad();
-
-                // TODO – Create 5 Instances Of Room.cs
-                // TODO – Link Rooms.cs
                 
                 // TODO – Think About Error Checking
+                // TODO – Create debug.assert
+                
                 // Checking Sequence
                 // End Game Check
                 if (_player.PlayerHealth == 0)
@@ -43,7 +53,7 @@ namespace DungeonExplorer
                     _story.LoseAdventure();
                 }
                 
-                else if (_rooms.ExitFound)
+                else if (room5.ExitFound)
                 {
                     _story.WinAdventure();
                     break;
