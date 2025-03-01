@@ -20,14 +20,15 @@ namespace DungeonExplorer
             // Initialises Adventure
             AdventureInit();
             
-            // TODO – Link Rooms.cs Somehow
-            
             // Create Rooms
             Rooms room1 = new Rooms();
             
             // Game Loop
             while (true)
             {
+                // Rooms Message
+                _story.GetRoomDescription();
+                
                 // Load Individual Action In The Room
                 AdventureLoad(room1);
             }

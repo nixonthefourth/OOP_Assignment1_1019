@@ -52,6 +52,40 @@ namespace DungeonExplorer
         // USER ACTIONS
         // USER ACTIONS
         
+        // Get Room Description Confirmation
+        public void GetRoomDescription()
+        {
+            // Clear Console
+            Console.Clear();
+
+            while (true)
+            {
+                // Display Message & Get Data
+                Helper.DisplayMessage("Would you like to get room description? Y/N \n \n".ToUpper());
+                string userResponse = Console.ReadLine().ToLower();
+            
+                // Checks
+                // Yes Case
+                if (userResponse == "y")
+                {
+                    // Display
+                    RoomMessages();
+                    break;
+                }
+            
+                // No Case
+                else if (userResponse == "n")
+                {
+                    break;
+                }
+
+                else
+                {
+                    Helper.DisplayMessage("Invalid response. Please try again.".ToUpper());
+                }
+            }
+        }
+        
         // GAME SEQUENCES
         // GAME SEQUENCES
         // GAME SEQUENCES
@@ -129,6 +163,7 @@ namespace DungeonExplorer
         {
             // Set A Random Message For Dwelling
             Random randomIndex = new Random();
+            
             string dwellMessage1 = "Thinking about Plato. \n \n";
             string dwellMessage2 = "Answer is 42! \n \n";
             string dwellMessage3 = "Mighty knights might do something tonight. \n \n";
