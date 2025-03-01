@@ -31,9 +31,17 @@ namespace DungeonExplorer
         // Get Name
         public string GetCharacterName()
         {
-            // Gets user's name
-            Helper.DisplayMessage("Enter your name, mighty warrior: ".ToUpper());
-            PlayerName = Console.ReadLine();
+            while (true)
+            {
+                // Gets user's name
+                Helper.DisplayMessage("Enter your name, mighty warrior: ".ToUpper());
+                PlayerName = Console.ReadLine();
+
+                if (PlayerName.Length == 0 || PlayerName == "" || PlayerName == " ")
+                {
+                    Helper.DisplayMessage("Invalid name.".ToUpper());
+                }
+            }
             
             // Return
             return PlayerName;
