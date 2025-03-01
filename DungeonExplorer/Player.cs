@@ -39,7 +39,12 @@ namespace DungeonExplorer
 
                 if (PlayerName.Length == 0 || PlayerName == "" || PlayerName == " ")
                 {
-                    Helper.DisplayMessage("Invalid name.".ToUpper());
+                    Helper.DisplayMessage("Invalid name. \n \n".ToUpper());
+                }
+
+                else
+                {
+                    break;
                 }
             }
             
