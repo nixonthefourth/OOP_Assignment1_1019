@@ -23,12 +23,12 @@ namespace DungeonExplorer
             // Create Rooms
             Rooms room1 = new Rooms();
             
+            // Room's Message
+            _story.GetRoomDescription();
+            
             // Game Loop
             while (true)
             {
-                // Rooms Message
-                _story.GetRoomDescription();
-                
                 // Load Individual Action In The Room
                 AdventureLoad(room1);
             }
@@ -145,6 +145,9 @@ namespace DungeonExplorer
                 {
                     // Enemy's Turn
                     Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
+                    
+                    // Summon The Enemy Message Line
+                    _story.EnemyMessage();
                 
                     // Assign Player's New Health
                     int playerHealth = _player.SetPlayerHealth(

@@ -57,11 +57,12 @@ namespace DungeonExplorer
         {
             // Clear Console
             Console.Clear();
+            
+            // Display Message & Get Data
+            Helper.DisplayMessage("Would you like to get room description? Y/N ".ToUpper());
 
             while (true)
             {
-                // Display Message & Get Data
-                Helper.DisplayMessage("Would you like to get room description? Y/N ".ToUpper());
                 string userResponse = Console.ReadLine().ToLower();
             
                 // Checks
@@ -138,7 +139,6 @@ namespace DungeonExplorer
             
             // Set The Random List
             Random rnd = new Random();
-            
         }
         
         // Room Messages
@@ -173,6 +173,8 @@ namespace DungeonExplorer
                 
             // Select The Displayed Message Randomly
             Helper.DisplayMessage(dwellMessage[randomIndex.Next(dwellMessage.Length)].ToUpper());
+            Helper.DisplayMessage("Press any key to continue... \n \n");
+            Console.ReadLine();
         }
     }
 }
