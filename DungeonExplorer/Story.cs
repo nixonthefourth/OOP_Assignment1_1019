@@ -82,7 +82,7 @@ namespace DungeonExplorer
 
                 else
                 {
-                    Helper.DisplayMessage("Invalid response. Please try again.".ToUpper());
+                    Helper.DisplayMessage("Invalid response. Please try again: ".ToUpper());
                 }
             }
         }
