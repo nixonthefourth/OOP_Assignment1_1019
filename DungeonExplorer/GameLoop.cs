@@ -23,7 +23,7 @@ namespace DungeonExplorer
             // Create Rooms
             Rooms room1 = new Rooms();
             
-            // Room's Message
+            // Rooms Message
             _story.GetRoomDescription();
             
             // Game Loop
