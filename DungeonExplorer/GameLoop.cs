@@ -12,8 +12,7 @@ namespace DungeonExplorer
         */
         
         Player _player = new Player();
-        Story _story = new Story();
-        Enemies _enemy = new Enemies();
+        private Story _story = new Story();
         
         // Game Loop
         public void Game()
@@ -23,24 +22,17 @@ namespace DungeonExplorer
             
             // TODO – Link Rooms.cs Somehow
             
-            // Creating Rooms
+            // Create Rooms
             Rooms room1 = new Rooms();
-            Rooms room2 = new Rooms();
-            Rooms room3 = new Rooms();
-            Rooms room4 = new Rooms();
-            
-            // This Room Is Universally Set To Be The One With An Exit
-            Rooms room5 = new Rooms();
             
             // Game Loop
             while (true)
             {
                 // Load Individual Action In The Room
-                AdventureLoad();
+                AdventureLoad(room1);
                 
                 // TODO – Think About Error Checking
                 // TODO – Create debug.assert
-                // TODO – Create Fighting System
             }
         }
 
@@ -61,45 +53,47 @@ namespace DungeonExplorer
         }
 
         // Loads The Adventure Into Code, So It's Selected Later
-        private void AdventureLoad()
+        private void AdventureLoad(Rooms curentRoom)
         {
             // Select Event In The Game
             string adventureAction = _story.SetAdventureActions();
-            bool adventureConfirmation = _story.AdventureAction(adventureAction);
+            Helper.DisplayMessage($"Now you are neck deep into {adventureAction} \n \n".ToUpper());
+            Helper.DisplayMessage("Press any key to continue... \n \n".ToUpper());
+            Console.ReadLine();
 
             // Checks The Action That May Happen In The Selected Adventure Action
             
             // Fight
-            if (adventureConfirmation && adventureAction == _story.AdventureActions[0])
+            if (adventureAction == _story.AdventureActions[0])
             {
                 // Clear Previous Lines
                 Console.Clear();
-
-                // Get Into a Fight
-                FightEncounter();
+                
+                // Action Itself
+                EnterFightRoom(curentRoom);
             }
             
             // Looking For Items
-            else if (adventureConfirmation && adventureAction == _story.AdventureActions[1])
+            else if (adventureAction == _story.AdventureActions[1])
             {
                 // Clear Previous Lines
                 Console.Clear();
 
                 // TODO – Add Item Lookup
-                Console.WriteLine("Empty Action");
+                Console.WriteLine("Empty Action \n \n");
             }
             
             // Looking For Exit
-            else if (adventureConfirmation && adventureAction == _story.AdventureActions[2])
+            else if (adventureAction == _story.AdventureActions[2])
             {
                 // Clear Previous Lines
                 Console.Clear();
                 
-                Console.WriteLine("Empty Action");
+                Console.WriteLine("Empty Action \n \n");
             }
             
             // Dwelling
-            else if (adventureConfirmation && adventureAction == _story.AdventureActions[3])
+            else if (adventureAction == _story.AdventureActions[3])
             {
                 // Clear Previous Lines
                 Console.Clear();
@@ -110,14 +104,18 @@ namespace DungeonExplorer
         }
         
         // Fighting Sequence
-        public void FightEncounter()
+        public void FightEncounter(Rooms currentRoom)
         {
             // Display The Entry Message
-            Helper.DisplayMessage("Los Bastardos Appears! \n \n".ToUpper());
+            // Check If The Room Has An Enemy First
+            if (currentRoom.GetRoomEnemy() == null)
+            {
+                Helper.DisplayMessage("Room seems really empty...".ToUpper());
+            }
 
-            // Set An Enemy
-            _enemy.SetEnemyHealth();
-            _enemy.EnemyDamage = 15;
+            // Set An Enemy In The Individual Room
+            Enemies enemy = currentRoom.GetRoomEnemy();
+            Helper.DisplayMessage($"The { enemy.EnemyName } appears \n \n");
 
             // Checks If Player Has An Item In The Inventory
             if (_player.PlayerDamage == 0)
@@ -129,17 +127,17 @@ namespace DungeonExplorer
             _player.PickPlayerItem("Sword");
             
             // Fighting Loop
-            while (_player.PlayerHealth > 0 && _enemy.EnemyHealth > 0)
+            while (_player.PlayerHealth > 0 && enemy.EnemyHealth > 0)
             {
                 // Player's Turn
                 Helper.DisplayMessage($"{_player.PlayerName}'s turn! Press Enter to attack!\n \n".ToUpper());
                 Console.ReadLine();
                 
                 // Damages Enemy
-                _enemy.EnemyHealth = _player.DamageEnemy(_enemy.EnemyHealth, _player.PlayerDamage);
+                enemy.EnemyHealth = _player.DamageEnemy(enemy.EnemyHealth, _player.PlayerDamage);
 
                 // Check Whether Enemy Is Dead
-                if (_enemy.EnemyHealth <= 0)
+                if (enemy.EnemyHealth <= 0)
                 {
                     Helper.DisplayMessage("You have defeated the enemy!\n \n".ToUpper());
                 }
@@ -152,10 +150,10 @@ namespace DungeonExplorer
                 
                     // Assign Player's New Health
                     int playerHealth = _player.SetPlayerHealth(
-                        _enemy.DamagePlayer(
-                            _enemy.EnemyDamage, 
+                        enemy.DamagePlayer(
+                            enemy.EnemyDamage, 
                             _player.PlayerHealth, 
-                            _enemy.EnemyHealth)
+                            enemy.EnemyHealth)
                     );
 
                 }
@@ -165,6 +163,18 @@ namespace DungeonExplorer
                     Helper.DisplayMessage("You have been defeated!\n \n".ToUpper());
                     _story.LoseAdventure();
                 }
+            }
+        }
+        
+        // Enter Fighting Room
+        public void EnterFightRoom(Rooms currenRoom)
+        {
+            currenRoom.GenerateRoomEnemy();
+            
+            // If There Is An Enemy, Then Start Combat
+            if (currenRoom.GetRoomEnemy() != null)
+            {
+                FightEncounter(currenRoom);
             }
         }
     }

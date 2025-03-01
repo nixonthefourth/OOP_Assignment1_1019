@@ -51,39 +51,6 @@ namespace DungeonExplorer
         // USER ACTIONS
         // USER ACTIONS
         // USER ACTIONS
-
-        // Get User's Confirmation On Any Action
-        public bool AdventureAction(string actionName)
-        {
-            // Input Validation
-            while (true)
-            {
-                // Entry Message
-                Helper.DisplayMessage($"Are you ready for {actionName}? Y/N ".ToUpper());
-                string adventureConfirmationInput = Console.ReadLine();
-                
-                // Actual Validator
-                if (adventureConfirmationInput.ToLower() == "y")
-                {
-                    AdventureConfirmation = true;
-                    break;
-                }
-            
-                else if  (adventureConfirmationInput.ToLower() == "n")
-                {
-                    AdventureConfirmation = false;
-                    break;
-                }
-
-                else
-                {
-                    Helper.DisplayMessage("Sorry, didn't quite get that \n".ToUpper());
-                }
-            }
-            
-            // Return
-            return AdventureConfirmation;
-        }
         
         // GAME SEQUENCES
         // GAME SEQUENCES
@@ -105,6 +72,10 @@ namespace DungeonExplorer
         // Losing Sequence
         public void LoseAdventure()
         {
+            // Clear Previous Lines
+            Console.Clear();
+            
+            // Messages
             Helper.DisplayMessage($"You finished the adventure! \n".ToUpper());
             Helper.DisplayMessage($"By being killed...".ToUpper());
             

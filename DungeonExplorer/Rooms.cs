@@ -2,7 +2,12 @@ namespace DungeonExplorer
 {
     public class Rooms
     {
-        // Variables
+        /*
+         * VARIABLES
+         * VARIABLES
+         * VARIABLES
+         */
+        
         public bool ExitFound { get; set; }
         
         // Weapons
@@ -10,18 +15,27 @@ namespace DungeonExplorer
         
         // Potions
         public string PotionName { get; set; }
-        public int PotionDamage { get; set; }
         
-        // Methods
+        // Enemies
+        // Stores An Enemy In The Individual Room
+        public Enemies RoomEnemy { get; set; }
+        
+        /*
+         * METHODS
+         * METHODS
+         * METHODS
+         */
         
         // TODO – Create Method For Room Navigation
         // TODO – Create Method For Room Description
         // TODO – Create Probability Of An Exit Placement (Ignore Complexity Level)
         // TODO – Create Item Generation (Using Probabilities)
-        // TODO – Link Enemies.cs
-        // TODO – Create Method For Enemy Placement
         
-        // Setters
+        /*
+         * SETTERS
+         * SETTERS
+         * SETTERS
+         */
         
         // Weapons
         public void SetRoomWeapon(string weaponName)
@@ -59,7 +73,11 @@ namespace DungeonExplorer
             }
         }
         
-        // Getters
+        /*
+         * GETTERS
+         * GETTERS
+         * GETTERS
+         */
         
         // Weapons
         
@@ -69,11 +87,50 @@ namespace DungeonExplorer
             return WeaponName;
         }
         
-        // Set Exit Flag
+        // System Calls
+        
+        // Get Exit Flag
         public bool AdventureExitFound()
         {
             ExitFound = false;
             return ExitFound;
+        }
+        
+        // Enemies
+        
+        // Retrieve Enemy In The Room
+        public Enemies GetRoomEnemy()
+        {
+            return RoomEnemy;
+        }
+        
+        /*
+         * GENERATORS
+         * GENERATORS
+         * GENERATORS
+         */
+        
+        // Generates Room With A Random Enemy
+        public void GenerateRoomEnemy()
+        {
+            // Randomisation Seed
+            Random rnd = new Random();
+            
+            // Spawn An Enemy
+            // 50% Chance Of The Event. 0 To 100 Would Be A Mess From A Mathematical Perspective. Email Me For Proof.
+            if (rnd.Next(0, 2) == 1)
+            {
+                // Selects The Enemy
+                RoomEnemy = Enemies.SelectEnemy();
+                // Helper.DisplayMessage($"{RoomEnemy} is lurking behind you...".ToUpper());
+            }
+
+            // The Case, Where Enemy Doesn't Spawn At All
+            else
+            {
+                RoomEnemy = null;
+                // Helper.DisplayMessage("The room is suspiciously empty...".ToUpper());
+            }
         }
     }
 }

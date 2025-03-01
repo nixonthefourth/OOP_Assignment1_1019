@@ -9,8 +9,6 @@ namespace DungeonExplorer
         
         // Methods
         
-        // Getters
-        
         // Setters
         
         // Health
@@ -52,11 +50,43 @@ namespace DungeonExplorer
             }
             
             // Enter Message
-            Helper.DisplayMessage($"Player's Health: {playerHealth} \n".ToUpper());
+            Helper.DisplayMessage($"Player's Health: {playerHealth} \n \n".ToUpper());
             Helper.DisplayMessage($"Enemy's Health: {enemyHealth} \n \n".ToUpper());
             
             // Returns
             return playerHealth;
+        }
+        
+        // Constructors
+        
+        // Create An Enemy
+        public Enemies(string name, int health, int damage)
+        {
+            // Assign individual Values
+            EnemyName = name;
+            EnemyHealth = health;
+            EnemyDamage = damage;
+        }
+        
+        // Select An Enemy Randomly
+        // Calling Static, Since We Need The Universal Type, Rather Than An Instance
+        public static Enemies SelectEnemy()
+        {
+            // Randomisation Seed
+            Random rnd = new Random();
+            
+            // Create A List Of All Enemies
+            List<Enemies> enemyGameList = new List<Enemies>
+            {
+                new Enemies("Kevin Jacques",100,80),
+                new Enemies("Greyhound",100,20),
+                new Enemies("Patrick Bateman",100,30),
+                new Enemies("Biggleswade Skeleton",100,15),
+            };
+            
+            // Return Values
+            // Using Count, Since It Returns The Exact Number Of Elements In The List
+            return enemyGameList[rnd.Next(enemyGameList.Count)];
         }
     }
 }
