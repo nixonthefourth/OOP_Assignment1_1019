@@ -11,11 +11,6 @@ namespace DungeonExplorer
         Referenced Across All The Files, Hence There Is 1 Public instance _story
         */
         
-        /*
-        Rooms and Enemies Have Singular Instances Due To The testing Purposes.
-        This Will Be Changed Later For The Population Purposes.
-        */
-        
         Player _player = new Player();
         Story _story = new Story();
         Enemies _enemy = new Enemies();
@@ -36,31 +31,20 @@ namespace DungeonExplorer
             
             // This Room Is Universally Set To Be The One With An Exit
             Rooms room5 = new Rooms();
-
             
-            // Works Through While Loop, Unless Player Dies or Finds Exit
+            // Game Loop
             while (true)
             {
+                // Load Individual Action In The Room
                 AdventureLoad();
                 
                 // TODO – Think About Error Checking
                 // TODO – Create debug.assert
-                
-                // Checking Sequence
-                // End Game Check
-                if (_player.PlayerHealth == 0)
-                { 
-                    _story.LoseAdventure();
-                }
-                
-                else if (room5.ExitFound)
-                {
-                    _story.WinAdventure();
-                    break;
-                }
+                // TODO – Create Fighting System
             }
         }
 
+        // Initialising Adventure
         public void AdventureInit()
         {
             // Intro To The Adventure
@@ -91,7 +75,8 @@ namespace DungeonExplorer
                 // Clear Previous Lines
                 Console.Clear();
 
-                Console.WriteLine("Empty Action");
+                // Get Into a Fight
+                FightEncounter();
             }
             
             // Looking For Items
@@ -100,6 +85,7 @@ namespace DungeonExplorer
                 // Clear Previous Lines
                 Console.Clear();
 
+                // TODO – Add Item Lookup
                 Console.WriteLine("Empty Action");
             }
             
@@ -120,6 +106,65 @@ namespace DungeonExplorer
                 
                 // Call Messages
                 _story.DwellingMessages();
+            }
+        }
+        
+        // Fighting Sequence
+        public void FightEncounter()
+        {
+            // Display The Entry Message
+            Helper.DisplayMessage("Los Bastardos Appears! \n \n".ToUpper());
+
+            // Set An Enemy
+            _enemy.SetEnemyHealth();
+            _enemy.EnemyDamage = 15;
+
+            // Checks If Player Has An Item In The Inventory
+            if (_player.PlayerDamage == 0)
+            {
+                _player.SetPlayerDamage();
+            }
+            
+            // Set Player's Damage To The Selected Item (Testing Purposes)
+            _player.PickPlayerItem("Sword");
+            
+            // Fighting Loop
+            while (_player.PlayerHealth > 0 && _enemy.EnemyHealth > 0)
+            {
+                // Player's Turn
+                Helper.DisplayMessage($"{_player.PlayerName}'s turn! Press Enter to attack!\n \n".ToUpper());
+                Console.ReadLine();
+                
+                // Damages Enemy
+                _enemy.EnemyHealth = _player.DamageEnemy(_enemy.EnemyHealth, _player.PlayerDamage);
+
+                // Check Whether Enemy Is Dead
+                if (_enemy.EnemyHealth <= 0)
+                {
+                    Helper.DisplayMessage("You have defeated the enemy!\n \n".ToUpper());
+                }
+
+                // If It Isn't, Then Hit Back
+                else
+                {
+                    // Enemy's Turn
+                    Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
+                
+                    // Assign Player's New Health
+                    int playerHealth = _player.SetPlayerHealth(
+                        _enemy.DamagePlayer(
+                            _enemy.EnemyDamage, 
+                            _player.PlayerHealth, 
+                            _enemy.EnemyHealth)
+                    );
+
+                }
+                // Check Whether The Player Is Dead
+                if (_player.PlayerHealth <= 0)
+                {
+                    Helper.DisplayMessage("You have been defeated!\n \n".ToUpper());
+                    _story.LoseAdventure();
+                }
             }
         }
     }

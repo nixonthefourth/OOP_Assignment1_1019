@@ -14,7 +14,7 @@ namespace DungeonExplorer
         // Welcome Message
         public void Welcome()
         {
-            Helper.DisplayMessage("Welcome to DungeonExplorer! \n \n".ToUpper());
+            Helper.DisplayMessage("Welcome to Dungeon Explorer! \n \n".ToUpper());
         }
         
         // Pre-Story
@@ -24,8 +24,8 @@ namespace DungeonExplorer
             Helper.DisplayMessage("*** \n".ToUpper());
             Helper.DisplayMessage("Long time ago... \n".ToUpper());
             Helper.DisplayMessage("In a far-far galaxy. \n".ToUpper());
-            Helper.DisplayMessage("The star of all was born. \n".ToUpper());
-            Helper.DisplayMessage("Hence, it's up to a mighty hero to find it. \n".ToUpper());
+            Helper.DisplayMessage("The son of Biggleswade was born. \n".ToUpper());
+            Helper.DisplayMessage("Hence, it's up to a mighty hero to find him. \n".ToUpper());
             Helper.DisplayMessage("*** \n \n".ToUpper());
             
             // Waiting Timer
@@ -107,6 +107,9 @@ namespace DungeonExplorer
         {
             Helper.DisplayMessage($"You finished the adventure! \n".ToUpper());
             Helper.DisplayMessage($"By being killed...".ToUpper());
+            
+            // End Suffering
+            Environment.Exit(0);
         }
         
         // Winning Sequence
@@ -115,7 +118,11 @@ namespace DungeonExplorer
             Helper.DisplayMessage($"You completed the adventure!".ToUpper());
         }
         
-        // Enemy Sounds
+        // MESSAGES
+        // MESSAGES
+        // MESSAGES
+        
+        // Enemy Messages
         public void EnemyMessage()
         {
             // Variables

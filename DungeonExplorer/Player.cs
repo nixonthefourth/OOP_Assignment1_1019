@@ -43,7 +43,7 @@ namespace DungeonExplorer
         public int SetPlayerDamage()
         {
             // Return
-            return PlayerDamage = 0;
+            return PlayerDamage = 5;
         }
         
         // Actions
@@ -54,28 +54,28 @@ namespace DungeonExplorer
         {
             // Generates Random Seed
             Random rnd = new Random();
-            int randomValue = rnd.Next(0, 100);
+            int randomValue = rnd.Next(0, 10);
             
             // Assigns The Probability Of Damaging Someone
-            // If It's Less Than 100 And More Than 40, Then Enemy Receieves The Damage
-            if (randomValue >= 40 && randomValue <= 100)
+            // If It's Less Than 100 And More Than 3, Then Enemy Receieves The Damage
+            if (randomValue >= 3)
             {
                 // Takes Away User's Health
                 enemyHealth -= playerDamage;
                 
                 // Message
-                Helper.DisplayMessage("Enemy Is Injured!! \n \n");
+                Helper.DisplayMessage("Enemy Is Injured!! \n \n".ToUpper());
             }
 
             else
             {
-                Helper.DisplayMessage($"Hit Was Missed! \n \n");
+                Helper.DisplayMessage($"{PlayerName}'s Hit Was Missed! \n \n".ToUpper());
             }
 
             // Checks Whether Enemy Is Alive
             if (enemyHealth <= 0)
             {
-                Helper.DisplayMessage("Enemy is dead!".ToUpper());
+                Helper.DisplayMessage("Enemy is dead! \n \n".ToUpper());
             }
             
             // Returns Enemy's Health
