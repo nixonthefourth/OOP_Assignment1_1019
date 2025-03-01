@@ -132,10 +132,10 @@ namespace DungeonExplorer
         public void EnemyMessage()
         {
             // Variables
-            string messagePattern1 = "Shagger!";
-            string messagePattern2 = "Frenchie!";
-            string messagePattern3 = "What a fool to run on skeleton!";
-            string messagePattern4 = "Bare your bones!";
+            string messagePattern1 = "Son Of A Bastard! \n";
+            string messagePattern2 = "Frenchie! \n";
+            string messagePattern3 = "What a fool to run on skeleton! \n";
+            string messagePattern4 = "Bare your bones! \n";
             
             // Set The Random List
             Random rnd = new Random();
