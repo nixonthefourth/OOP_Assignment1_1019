@@ -125,7 +125,7 @@ namespace DungeonExplorer
             _player.PickPlayerItem("Sword");
             
             // Fighting Loop
-            while (_player.PlayerHealth > 0 && enemy.EnemyHealth > 0)
+            while (true)
             {
                 // Player's Turn
                 Helper.DisplayMessage($"{_player.PlayerName}'s turn! Press Enter to attack!\n \n".ToUpper());
@@ -138,6 +138,7 @@ namespace DungeonExplorer
                 if (enemy.EnemyHealth <= 0)
                 {
                     Helper.DisplayMessage("You have defeated the enemy!\n \n".ToUpper());
+                    break;
                 }
 
                 // If It Isn't, Then Hit Back
@@ -159,6 +160,8 @@ namespace DungeonExplorer
                 if (_player.PlayerHealth <= 0)
                 {
                     Helper.DisplayMessage("You have been defeated!\n \n".ToUpper());
+                    break;
+                    
                     _story.LoseAdventure();
                 }
             }

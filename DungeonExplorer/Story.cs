@@ -139,6 +139,12 @@ namespace DungeonExplorer
             
             // Set The Random List
             Random rnd = new Random();
+            
+            // Append An Array
+            string[] enemyMessage = new string[] { messagePattern1, messagePattern2, messagePattern3, messagePattern4 };
+                
+            // Select The Displayed Message Randomly
+            Helper.DisplayMessage(enemyMessage[rnd.Next(enemyMessage.Length)].ToUpper());
         }
         
         // Room Messages
