@@ -8,6 +8,7 @@ namespace DungeonExplorer
          * VARIABLES
          */
         
+        // System
         public bool ExitFound { get; set; }
         
         // Weapons
