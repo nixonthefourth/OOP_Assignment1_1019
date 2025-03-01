@@ -113,7 +113,7 @@ namespace DungeonExplorer
 
             // Set An Enemy In The Individual Room
             Enemies enemy = currentRoom.GetRoomEnemy();
-            Helper.DisplayMessage($"The { enemy.EnemyName } appears \n \n");
+            Helper.DisplayMessage($"The { enemy.EnemyName } appears \n \n".ToUpper());
 
             // Checks If Player Has An Item In The Inventory
             if (_player.PlayerDamage == 0)
