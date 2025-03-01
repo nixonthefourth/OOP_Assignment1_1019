@@ -28,7 +28,6 @@ namespace DungeonExplorer
          */
         
         // TODO – Create Method For Room Navigation
-        // TODO – Create Method For Room Description
         // TODO – Create Probability Of An Exit Placement (Ignore Complexity Level)
         // TODO – Create Item Generation (Using Probabilities)
         
