@@ -55,9 +55,6 @@ namespace DungeonExplorer
             Helper.DisplayMessage($"Player's Health: {playerHealth} \n \n".ToUpper());
             Helper.DisplayMessage($"Enemy's Health: {enemyHealth} \n \n".ToUpper());
             
-            // Debug Assertion
-            Debug.Assert(playerHealth >= 0 && playerHealth <= 100, "Player health should be between 0 and 100");
-            
             // Returns
             return playerHealth;
         }

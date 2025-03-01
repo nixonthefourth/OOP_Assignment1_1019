@@ -148,7 +148,7 @@ namespace DungeonExplorer
                     Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
                 
                     // Assign Player's New Health
-                    int playerHealth = _player.SetPlayerHealth(
+                    _player.SetPlayerHealth(
                         enemy.DamagePlayer(
                             enemy.EnemyDamage, 
                             _player.PlayerHealth, 
@@ -160,9 +160,8 @@ namespace DungeonExplorer
                 if (_player.PlayerHealth <= 0)
                 {
                     Helper.DisplayMessage("You have been defeated!\n \n".ToUpper());
-                    break;
-                    
                     _story.LoseAdventure();
+                    break;
                 }
             }
         }
