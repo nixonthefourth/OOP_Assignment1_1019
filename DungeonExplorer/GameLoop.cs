@@ -30,9 +30,6 @@ namespace DungeonExplorer
             {
                 // Load Individual Action In The Room
                 AdventureLoad(room1);
-                
-                // TODO – Think About Error Checking
-                // TODO – Create debug.assert
             }
         }
 

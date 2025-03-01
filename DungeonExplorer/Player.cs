@@ -1,18 +1,31 @@
+using System.Diagnostics;
+
 namespace DungeonExplorer
 {
     public class Player
     {
-        // Varaibles
+        /*
+         * VARIABLES
+         * VARIABLES
+         * VARIABLES
+         */
+        
         public string PlayerName { get; private set; }
         public int PlayerHealth { get; private set; }
         public int PlayerDamage { get; private set; }
         public string PlayerInventoryItem { get; private set; }
         
-        // Methods
+        /*
+         * METHODS
+         * METHODS
+         * METHODS
+         */
         
-        // TODO – Link Files
-        
-        // Getters
+        /*
+         * GETTERS
+         * GETTERS
+         * GETTERS
+         */
         
         // Name
         // Get Name
@@ -26,7 +39,11 @@ namespace DungeonExplorer
             return PlayerName;
         }
         
-        // Setters
+        /*
+         * SETTERS
+         * SETTERS
+         * SETTERS
+         */
         
         // Health
         
@@ -85,6 +102,9 @@ namespace DungeonExplorer
         // Pick Up An Inventory Item
         public void PickPlayerItem(string itemName)
         {
+            // Debug
+            Debug.Assert(itemName != null && itemName != "", "Item name should not be empty!");
+            
             // Changes Parameters & Stats Of The Player
             // Void, Since Data Is Assigned, Rather Than Retrieved
 
