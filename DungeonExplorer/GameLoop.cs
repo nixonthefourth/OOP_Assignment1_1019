@@ -145,9 +145,6 @@ namespace DungeonExplorer
                 {
                     // Enemy's Turn
                     Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
-                    
-                    // Summon The Enemy Message Line
-                    _story.EnemyMessage();
                 
                     // Assign Player's New Health
                     int playerHealth = _player.SetPlayerHealth(
@@ -175,6 +172,9 @@ namespace DungeonExplorer
             // If There Is An Enemy, Then Start Combat
             if (currenRoom.GetRoomEnemy() != null)
             {
+                // Summon The Enemy Message Line
+                _story.EnemyMessage();
+                
                 FightEncounter(currenRoom);
             }
         }
