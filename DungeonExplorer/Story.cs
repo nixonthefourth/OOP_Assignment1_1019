@@ -61,7 +61,7 @@ namespace DungeonExplorer
             while (true)
             {
                 // Display Message & Get Data
-                Helper.DisplayMessage("Would you like to get room description? Y/N \n \n".ToUpper());
+                Helper.DisplayMessage("Would you like to get room description? Y/N ".ToUpper());
                 string userResponse = Console.ReadLine().ToLower();
             
                 // Checks
