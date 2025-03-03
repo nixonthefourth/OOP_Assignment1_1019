@@ -13,7 +13,7 @@ namespace DungeonExplorer
         public string PlayerName { get; private set; }
         public int PlayerHealth { get; set; }
         public int PlayerDamage { get; set; }
-        public string PlayerInventoryItem { get; private set; }
+        public string PlayerInventoryItem { get; set; }
         
         // Generates Random Seed
         private Random _randomInteger = new Random();
@@ -79,50 +79,6 @@ namespace DungeonExplorer
             
             // Returns Enemy's Health
             return enemyHealth;
-        }
-        
-        // Pick Up An Inventory Item From The Room
-        
-        public void PickPlayerItem(string itemName)
-        {
-            // Debug
-            Debug.Assert(itemName != null && itemName != "", "Item name should not be empty!");
-            
-            // Changes Parameters & Stats Of The Player
-            // Void, Since Data Is Assigned, Rather Than Retrieved
-
-            // Assigning Items
-            // Weapons
-            
-            // If Sword Is Found
-            if (itemName == "Sword")
-            {
-                PlayerDamage = 20;
-                PlayerInventoryItem = itemName;
-            }
-            
-            // If Axe Is Found
-            else if (itemName == "Axe")
-            {
-                PlayerDamage = 40;
-                PlayerInventoryItem = itemName;
-            }
-            
-            // Setting Potions
-            
-            // Healing
-            else if (itemName == "Cheeky Potion")
-            {
-                // Full Regeneration For Simplicity's Sake
-                PlayerHealth = 100;
-            }
-            
-            // The Damaging One
-            else if (itemName == "Potion of Biggleswade")
-            {
-                // This Is What Happens If You Go To Biggleswade
-                PlayerHealth -= 20;
-            }
         }
     }
 }

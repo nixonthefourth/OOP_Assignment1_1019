@@ -39,7 +39,13 @@ namespace DungeonExplorer
             }
         }
 
-        // Starting Sequence Of The Adventure
+        /*
+         * STORY SEQUENCE
+         * STORY SEQUENCE
+         * STORY SEQUENCE
+         */
+        
+        // Initialise Adventure
         private void AdventureInit()
         {
             // Intro To The Adventure
@@ -55,6 +61,7 @@ namespace DungeonExplorer
         }
 
         // Loads The Adventure Into Code, So It's Selected Later
+        
         private void AdventureLoad(Rooms curentRoom)
         {
             // Select Event In The Game
@@ -71,7 +78,7 @@ namespace DungeonExplorer
             if (_story.AdventureActionName == _story.AdventureActions[0])
             {
                 // Action Itself
-                EnterFightRoom(curentRoom);
+                EnterFight(curentRoom);
                 
                 // Confirmation Action
                 _story.ConfirmationMessage();
@@ -80,8 +87,11 @@ namespace DungeonExplorer
             // Looking For Items
             else if (_story.AdventureActionName == _story.AdventureActions[1])
             {
-                // TODO – Add Item Lookup
-                Console.WriteLine("Empty Action \n \n");
+                // Item Search
+                ItemFound(curentRoom);
+                
+                // Action Confrimation
+                _story.ConfirmationMessage();
             }
             
             // Looking For Exit
@@ -104,7 +114,14 @@ namespace DungeonExplorer
             }
         }
         
+        /*
+         * FIGHT
+         * FIGHT
+         * FIGHT
+         */
+        
         // Fighting Sequence
+        
         private void FightEncounter(Rooms currentRoom)
         {
             // Set An Enemy In The Individual Room
@@ -117,9 +134,6 @@ namespace DungeonExplorer
                 // Setting Damage To 5, So User Doesn't Feel Helpless, If Weapon Wasn't Found Yet
                 _player.PlayerDamage = 5;
             }
-            
-            // Set Player's Damage To The Selected Item (Testing Purposes, Since Item Search Hasn't Been Implemented Yet)
-            _player.PickPlayerItem("Sword");
             
             // Fighting Loop
             while (true)
@@ -171,14 +185,15 @@ namespace DungeonExplorer
             }
         }
         
-        // Enter Fighting Room
-        private void EnterFightRoom(Rooms currenRoom)
+        // Enter Fighting Mode Inside The Room
+        
+        private void EnterFight(Rooms currentRoom)
         {
             // Generates The Enemy
-            currenRoom.GenerateRoomEnemy();
+            currentRoom.GenerateRoomEnemy();
             
             // If There Is An Enemy, Then Start Combat
-            if (currenRoom.RoomEnemy != null)
+            if (currentRoom.RoomEnemy != null)
             {
                 // Summon The Enemy Message Line
                 _story.EnemyMessage();
@@ -186,13 +201,63 @@ namespace DungeonExplorer
                 // Confirmation Action
                 _story.ConfirmationMessage();
                 
-                FightEncounter(currenRoom);
+                FightEncounter(currentRoom);
             }
 
             // In case there is no enemy
             else
             {
                 Helper.DisplayMessage("There is no enemy, lol!\n \n".ToUpper());
+            }
+        }
+        
+        /*
+         * INVENTORY & ITEMS
+         * INVENTORY & ITEMS
+         * INVENTORY & ITEMS
+         */
+        
+        // Item Search Action
+        private void ItemFound(Rooms currentRoom)
+        {
+            // Generate Item In The Room
+            currentRoom.GenerateRoomItem();
+            
+            // Check Whether It Exists
+            // If It Does, Pick Up
+            if (currentRoom.RoomItem != null)
+            {
+                // Display a Message
+                Helper.DisplayMessage("Item found! \n".ToUpper());
+                Helper.DisplayMessage($"It's {currentRoom.RoomItem.ItemName} \n \n".ToUpper());
+                
+                // Item Assignment To Player
+                
+                // Assign Damage
+                _player.PlayerDamage = currentRoom.RoomItem.ItemDamage;
+                
+                // Assign Item's Name
+                _player.PlayerInventoryItem = currentRoom.RoomItem.ItemName;
+                
+                // Assign New Player Health (If Applicable)
+                // Healing
+                _player.PlayerHealth += currentRoom.RoomItem.ItemHeal;
+                
+                // Damaging
+                _player.PlayerHealth -= currentRoom.RoomItem.ItemDamage;
+                
+                // Show Stats
+                Helper.DisplayMessage($"Player's Health: {_player.PlayerHealth} \n" +
+                                      $"Player's Damage: {_player.PlayerDamage} \n \n");
+                
+                // Action Confirmation
+                _story.ConfirmationMessage();
+            }
+
+            // In Case There Is No Item
+            else
+            {
+                Helper.DisplayMessage("There is no item, lol! \n \n".ToUpper());
             }
         }
     }
