@@ -56,7 +56,7 @@ namespace DungeonExplorer
             // Select Event In The Game
             string adventureAction = _story.SetAdventureActions();
             Helper.DisplayMessage($"Now you are neck deep into {adventureAction} \n \n".ToUpper());
-            Helper.DisplayMessage("Press any key to continue... \n \n".ToUpper());
+            Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
             Console.ReadLine();
 
             // Checks The Action That May Happen In The Selected Adventure Action

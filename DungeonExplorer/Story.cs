@@ -3,7 +3,6 @@ namespace DungeonExplorer
     public class Story
     {
         // Variables
-        private bool AdventureConfirmation { get; set; }
         public string AdventureActionName { get; set; }
         public string[] AdventureActions = new string[] { "Fight", "Item Search", "Exit Search", "Dwelling" };
         
@@ -15,6 +14,10 @@ namespace DungeonExplorer
         public void Welcome()
         {
             Helper.DisplayMessage("Welcome to Dungeon Explorer! \n \n".ToUpper());
+            
+            // Pressing Enter
+            Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+            Console.ReadLine();
         }
         
         // Pre-Story
@@ -28,8 +31,9 @@ namespace DungeonExplorer
             Helper.DisplayMessage("Hence, it's up to a mighty hero to find him. \n".ToUpper());
             Helper.DisplayMessage("*** \n \n".ToUpper());
             
-            // Waiting Timer
-            System.Threading.Thread.Sleep(3000);
+            // Pressing Enter
+            Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+            Console.ReadLine();
             
             // Clear the Console
             Console.Clear();
@@ -41,8 +45,9 @@ namespace DungeonExplorer
             Helper.DisplayMessage($"Welcome, {characterName}. \n \n".ToUpper());
             Console.WriteLine();
             
-            // Wait
-            System.Threading.Thread.Sleep(3000);
+            // Pressing Enter
+            Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+            Console.ReadLine();
             
             // Clear Console
             Console.Clear();
@@ -179,7 +184,7 @@ namespace DungeonExplorer
                 
             // Select The Displayed Message Randomly
             Helper.DisplayMessage(dwellMessage[randomIndex.Next(dwellMessage.Length)].ToUpper());
-            Helper.DisplayMessage("Press any key to continue... \n \n");
+            Helper.DisplayMessage("Press Enter to continue... \n \n");
             Console.ReadLine();
         }
     }
