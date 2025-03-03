@@ -11,7 +11,7 @@ namespace DungeonExplorer
         Referenced Across All The Files, Hence There Is 1 Public instance _story
         */
         
-        Player _player = new Player();
+        private Player _player = new Player();
         private Story _story = new Story();
         
         /*
@@ -40,7 +40,7 @@ namespace DungeonExplorer
         }
 
         // Starting Sequence Of The Adventure
-        public void AdventureInit()
+        private void AdventureInit()
         {
             // Intro To The Adventure
             _story.Welcome();
@@ -105,7 +105,7 @@ namespace DungeonExplorer
         }
         
         // Fighting Sequence
-        public void FightEncounter(Rooms currentRoom)
+        private void FightEncounter(Rooms currentRoom)
         {
             // Set An Enemy In The Individual Room
             Enemies enemy = currentRoom.RoomEnemy;
@@ -172,7 +172,7 @@ namespace DungeonExplorer
         }
         
         // Enter Fighting Room
-        public void EnterFightRoom(Rooms currenRoom)
+        private void EnterFightRoom(Rooms currenRoom)
         {
             // Generates The Enemy
             currenRoom.GenerateRoomEnemy();
