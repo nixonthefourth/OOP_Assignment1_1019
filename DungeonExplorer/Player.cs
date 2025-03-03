@@ -15,6 +15,9 @@ namespace DungeonExplorer
         public int PlayerDamage { get; private set; }
         public string PlayerInventoryItem { get; private set; }
         
+        // Generates Random Seed
+        private Random _randomInteger = new Random();
+        
         /*
          * METHODS
          * METHODS
@@ -86,9 +89,7 @@ namespace DungeonExplorer
         
         public int DamageEnemy(int enemyHealth, int playerDamage)
         {
-            // Generates Random Seed
-            Random rnd = new Random();
-            int randomValue = rnd.Next(0, 10);
+            int randomValue = _randomInteger.Next(0, 10);
             
             // Assigns The Probability Of Damaging Someone
             // If It's Less Than 100 And More Than 3, Then Enemy Receieves The Damage

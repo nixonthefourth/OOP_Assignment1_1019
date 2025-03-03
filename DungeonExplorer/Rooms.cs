@@ -11,6 +11,9 @@ namespace DungeonExplorer
         // System
         public bool ExitFound { get; set; }
         
+        // Randomisation Seed
+        private Random _randomInteger = new Random();
+        
         // Weapons
         public string WeaponName { get; set; }
         
@@ -29,7 +32,7 @@ namespace DungeonExplorer
         
         // TODO – Create Method For Room Navigation
         // TODO – Create Probability Of An Exit Placement (Ignore Complexity Level)
-        // TODO – Create Item Generation (Using Probabilities)
+        // TODO – Create Item Generation (Using Probabilities, Similar To The Enemy Stuff)
         
         /*
          * SETTERS
@@ -113,12 +116,9 @@ namespace DungeonExplorer
         // Generates Room With A Random Enemy
         public void GenerateRoomEnemy()
         {
-            // Randomisation Seed
-            Random rnd = new Random();
-            
             // Spawn An Enemy
             // 50% Chance Of The Event. 0 To 100 Would Be A Mess From A Mathematical Perspective. Email Me For Proof.
-            if (rnd.Next(0, 2) == 1)
+            if (_randomInteger.Next(0, 2) == 1)
             {
                 // Selects The Enemy
                 RoomEnemy = Enemies.SelectEnemy();

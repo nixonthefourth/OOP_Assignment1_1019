@@ -5,9 +5,16 @@ namespace DungeonExplorer
     public class Enemies
     {
         // Variables
+        
+        // Enemy Stuff
         public string EnemyName { get; set; }
         public int EnemyHealth { get; set; }
         public int EnemyDamage { get; set; }
+        
+        // System
+        
+        // Randomisation Seed
+        private static Random _randomInteger = new Random();
         
         // Methods
         
@@ -74,9 +81,6 @@ namespace DungeonExplorer
         // Calling Static, Since We Need The Universal Type, Rather Than An Instance
         public static Enemies SelectEnemy()
         {
-            // Randomisation Seed
-            Random rnd = new Random();
-            
             // Create A List Of All Enemies
             List<Enemies> enemyGameList = new List<Enemies>
             {
@@ -88,7 +92,7 @@ namespace DungeonExplorer
             
             // Return Values
             // Using Count, Since It Returns The Exact Number Of Elements In The List
-            return enemyGameList[rnd.Next(enemyGameList.Count)];
+            return enemyGameList[_randomInteger.Next(enemyGameList.Count)];
         }
     }
 }

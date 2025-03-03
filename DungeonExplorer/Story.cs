@@ -3,8 +3,15 @@ namespace DungeonExplorer
     public class Story
     {
         // Variables
+        
+        // Story
         public string AdventureActionName { get; set; }
         public string[] AdventureActions = new string[] { "Fight", "Item Search", "Exit Search", "Dwelling" };
+        
+        // System
+        
+        // Define A Random Seed
+        Random _randomInteger = new Random();
         
         // START OF STORY
         // START OF STORY
@@ -18,6 +25,9 @@ namespace DungeonExplorer
             // Pressing Enter
             Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
             Console.ReadLine();
+            
+            // Clear The Console
+            Console.Clear();
         }
         
         // Pre-Story
@@ -99,9 +109,7 @@ namespace DungeonExplorer
         // Set Adventure Actions
         public string SetAdventureActions()
         {
-            // Define Random Integers
-            Random rnd = new Random();
-            int index = rnd.Next(0, 4);
+            int index = _randomInteger.Next(0, 4);
             
             // Assigns a Random Value For The Action
             AdventureActionName = AdventureActions[index];
@@ -142,22 +150,16 @@ namespace DungeonExplorer
             string messagePattern3 = "What a fool to run on skeleton! \n";
             string messagePattern4 = "Bare your bones! \n";
             
-            // Set The Random List
-            Random rnd = new Random();
-            
             // Append An Array
             string[] enemyMessage = new string[] { messagePattern1, messagePattern2, messagePattern3, messagePattern4 };
                 
             // Select The Displayed Message Randomly
-            Helper.DisplayMessage(enemyMessage[rnd.Next(enemyMessage.Length)].ToUpper());
+            Helper.DisplayMessage(enemyMessage[_randomInteger.Next(enemyMessage.Length)].ToUpper());
         }
         
         // Room Messages
         public void RoomMessages()
         {
-            // Set A Random Message For The Room
-            Random randomIndex = new Random();
-
             string roomMessage1 = "You are walking around dark dungeons of Stevenage \n \n";
             string roomMessage2 = "Something has creaked... \n \n";
             string roomMessage3 = "Your wife might call you any time. \n \n";
@@ -166,15 +168,12 @@ namespace DungeonExplorer
             string[] roomMessage = new string[] { roomMessage1, roomMessage2, roomMessage3 };
                 
             // Select The Displayed Message Randomly
-            Helper.DisplayMessage(roomMessage[randomIndex.Next(roomMessage.Length)].ToUpper());
+            Helper.DisplayMessage(roomMessage[_randomInteger.Next(roomMessage.Length)].ToUpper());
         }
         
         // Dwelling Messages
         public void DwellingMessages()
         {
-            // Set A Random Message For Dwelling
-            Random randomIndex = new Random();
-            
             string dwellMessage1 = "Thinking about Plato. \n \n";
             string dwellMessage2 = "Answer is 42! \n \n";
             string dwellMessage3 = "Mighty knights might do something tonight. \n \n";
@@ -183,7 +182,7 @@ namespace DungeonExplorer
             string[] dwellMessage = new string[] { dwellMessage1, dwellMessage2, dwellMessage3 };
                 
             // Select The Displayed Message Randomly
-            Helper.DisplayMessage(dwellMessage[randomIndex.Next(dwellMessage.Length)].ToUpper());
+            Helper.DisplayMessage(dwellMessage[_randomInteger.Next(dwellMessage.Length)].ToUpper());
             Helper.DisplayMessage("Press Enter to continue... \n \n");
             Console.ReadLine();
         }
