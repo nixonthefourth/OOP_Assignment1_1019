@@ -184,7 +184,17 @@ namespace DungeonExplorer
                 if (_player.PlayerHealth <= 0)
                 {
                     Helper.DisplayMessage("You have been defeated!\n \n".ToUpper());
+                    // Action Confirmation
+                    Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+                    Console.ReadLine();
+                
+                    // Clear Lines
+                    Console.Clear();
+                    
+                    // Finish Game
                     _story.LoseAdventure();
+                    
+                    // Break The Loop
                     break;
                 }
             }
