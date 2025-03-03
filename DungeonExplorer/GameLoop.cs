@@ -45,8 +45,8 @@ namespace DungeonExplorer
             string characterName = _player.GetCharacterName();
             _story.CharacterNameConfirmation(characterName);
             
-            // Set Player's Health
-            _player.SetPlayerHealth(100);
+            // Set Player's Starting Health
+            _player.PlayerHealth = 100;
         }
 
         // Loads The Adventure Into Code, So It's Selected Later
@@ -162,13 +162,10 @@ namespace DungeonExplorer
                     Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
                 
                     // Assign Player's New Health Through Damage
-                    _player.SetPlayerHealth(
-                        enemy.DamagePlayer(
-                            enemy.EnemyDamage, 
-                            _player.PlayerHealth, 
-                            enemy.EnemyHealth)
-                    );
-
+                    _player.PlayerHealth = enemy.DamagePlayer(
+                        enemy.EnemyDamage,
+                        _player.PlayerHealth,
+                        enemy.EnemyHealth);
                 }
                 
                 // Action Confirmation

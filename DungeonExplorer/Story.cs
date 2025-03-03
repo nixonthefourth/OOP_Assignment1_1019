@@ -2,7 +2,11 @@ namespace DungeonExplorer
 {
     public class Story
     {
-        // Variables
+        /*
+         * VARIABLES
+         * VARIABLES
+         * VARIABLES
+         */
         
         // Story
         public string AdventureActionName { get; set; }
@@ -13,9 +17,11 @@ namespace DungeonExplorer
         // Define A Random Seed
         Random _randomInteger = new Random();
         
-        // START OF STORY
-        // START OF STORY
-        // START OF STORY
+        /*
+         * STORY START
+         * STORY START
+         * STORY START
+         */
         
         // Welcome Message
         public void Welcome()
@@ -49,7 +55,7 @@ namespace DungeonExplorer
             Console.Clear();
         }
         
-        // Output Character's Name (Input Confirmation)
+        // Output Character's Name (Name Confirmation Pretty Much)
         public void CharacterNameConfirmation(string characterName)
         {
             Helper.DisplayMessage($"Welcome, {characterName}. \n \n".ToUpper());
@@ -63,9 +69,11 @@ namespace DungeonExplorer
             Console.Clear();
         }
         
-        // USER ACTIONS
-        // USER ACTIONS
-        // USER ACTIONS
+        /*
+         * USER ACTIONS
+         * USER ACTIONS
+         * USER ACTIONS
+         */
         
         // Get Room Description Confirmation
         public void GetRoomDescription()
@@ -102,13 +110,16 @@ namespace DungeonExplorer
             }
         }
         
-        // GAME SEQUENCES
-        // GAME SEQUENCES
-        // GAME SEQUENCES
+        /*
+         * GAME SEQUENCES
+         * GAME SEQUENCES
+         * GAME SEQUENCES
+         */
 
         // Set Adventure Actions
         public void SetAdventureActions()
         {
+            // Random Index
             int index = _randomInteger.Next(0, 3);
             
             // Assigns a Random Value For The Action
@@ -135,9 +146,11 @@ namespace DungeonExplorer
             Helper.DisplayMessage($"You completed the adventure!".ToUpper());
         }
         
-        // MESSAGES
-        // MESSAGES
-        // MESSAGES
+        /*
+         * MESSAGES
+         * MESSAGES
+         * MESSAGES
+         */
         
         // Enemy Messages
         public void EnemyMessage()

@@ -4,7 +4,11 @@ namespace DungeonExplorer
 {
     public class Enemies
     {
-        // Variables
+        /*
+         * VARIABLES
+         * VARIABLES
+         * VARIABLES
+         */
         
         // Enemy Stuff
         public string EnemyName { get; set; }
@@ -16,21 +20,11 @@ namespace DungeonExplorer
         // Randomisation Seed
         private static Random _randomInteger = new Random();
         
-        // Methods
-        
-        // Setters
-        
-        // Health
-
-        public int SetEnemyHealth()
-        {
-            // Sets Initial Health Of The Individual Enemy
-            EnemyHealth = 100;
-
-            return EnemyHealth;
-        }
-        
-        // Actions
+        /*
+         * METHODS
+         * METHODS
+         * METHODS
+         */
         
         // Damage Player
         public int DamagePlayer(int enemyDamage, int playerHealth, int enemyHealth)
@@ -66,7 +60,11 @@ namespace DungeonExplorer
             return playerHealth;
         }
         
-        // Constructors
+        /*
+         * CONSTRUCTORS
+         * CONSTRUCTORS
+         * CONSTRUCTORS
+         */
         
         // Create An Enemy
         public Enemies(string name, int health, int damage)

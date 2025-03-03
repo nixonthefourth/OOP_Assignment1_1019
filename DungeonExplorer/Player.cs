@@ -11,7 +11,7 @@ namespace DungeonExplorer
          */
         
         public string PlayerName { get; private set; }
-        public int PlayerHealth { get; private set; }
+        public int PlayerHealth { get; set; }
         public int PlayerDamage { get; set; }
         public string PlayerInventoryItem { get; private set; }
         
@@ -54,23 +54,6 @@ namespace DungeonExplorer
             // Return
             return PlayerName;
         }
-        
-        /*
-         * SETTERS
-         * SETTERS
-         * SETTERS
-         */
-        
-        // Health
-        
-        // Set Player's Health
-        public int SetPlayerHealth(int playerHealth)
-        {
-            PlayerHealth = playerHealth;
-            return PlayerHealth;
-        }
-        
-        // Damage
         
         /*
          * ACTIONS
