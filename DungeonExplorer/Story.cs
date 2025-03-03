@@ -197,5 +197,16 @@ namespace DungeonExplorer
             Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
             Console.ReadLine();
         }
+        
+        // Confirmation Message
+        public void ConfirmationMessage()
+        {
+            // Showing Confirmation Message
+            Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+            Console.ReadLine();
+            
+            // Clear Previous Lines
+            Console.Clear();
+        }
     }
 }

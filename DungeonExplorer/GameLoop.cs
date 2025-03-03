@@ -62,12 +62,9 @@ namespace DungeonExplorer
             
             // Display Messages
             Helper.DisplayMessage($"Now you are neck deep into {_story.AdventureActionName} \n \n".ToUpper());
-            Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
-            Console.ReadLine();
             
-            // Clear Previous Lines
-            Console.Clear();
-
+            // Confirmation Action
+            _story.ConfirmationMessage();
             // Checks The Action That May Happen In The Selected Adventure Action
             
             // Fight
@@ -76,12 +73,8 @@ namespace DungeonExplorer
                 // Action Itself
                 EnterFightRoom(curentRoom);
                 
-                // Showing Confirmation Message
-                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
-                Console.ReadLine();
-            
-                // Clear Previous Lines
-                Console.Clear();
+                // Confirmation Action
+                _story.ConfirmationMessage();
             }
             
             // Looking For Items
@@ -89,13 +82,6 @@ namespace DungeonExplorer
             {
                 // TODO – Add Item Lookup
                 Console.WriteLine("Empty Action \n \n");
-                
-                // Showing Confirmation Message
-                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
-                Console.ReadLine();
-            
-                // Clear Previous Lines
-                Console.Clear();
             }
             
             // Looking For Exit
@@ -103,12 +89,8 @@ namespace DungeonExplorer
             {
                 Console.WriteLine("Empty Action \n \n");
                 
-                // Showing Confirmation Message
-                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
-                Console.ReadLine();
-            
-                // Clear Previous Lines
-                Console.Clear();
+                // Confirmation Action
+                _story.ConfirmationMessage();
             }
             
             // Dwelling
@@ -117,12 +99,8 @@ namespace DungeonExplorer
                 // Call Messages
                 _story.DwellingMessages();
                 
-                // Showing Confirmation Message
-                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
-                Console.ReadLine();
-            
-                // Clear Previous Lines
-                Console.Clear();
+                // Confirmation Action
+                _story.ConfirmationMessage();
             }
         }
         
@@ -173,12 +151,8 @@ namespace DungeonExplorer
                         enemy.EnemyHealth);
                 }
                 
-                // Action Confirmation
-                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
-                Console.ReadLine();
-                
-                // Clear Lines
-                Console.Clear();
+                // Confirmation Action
+                _story.ConfirmationMessage();
                 
                 // Check Whether The Player Is Dead
                 if (_player.PlayerHealth <= 0)
@@ -212,12 +186,8 @@ namespace DungeonExplorer
                 // Summon The Enemy Message Line
                 _story.EnemyMessage();
                 
-                // Action Confirmation
-                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
-                Console.ReadLine();
-                
-                // Clear Lines For Future Clarity
-                Console.Clear();
+                // Confirmation Action
+                _story.ConfirmationMessage();
                 
                 FightEncounter(currenRoom);
             }
