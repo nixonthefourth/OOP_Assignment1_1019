@@ -12,7 +12,7 @@ namespace DungeonExplorer
         
         public string PlayerName { get; private set; }
         public int PlayerHealth { get; private set; }
-        public int PlayerDamage { get; private set; }
+        public int PlayerDamage { get; set; }
         public string PlayerInventoryItem { get; private set; }
         
         // Generates Random Seed
@@ -71,13 +71,6 @@ namespace DungeonExplorer
         }
         
         // Damage
-        
-        // Set Player's Initial Damage
-        public int SetPlayerDamage()
-        {
-            // Return
-            return PlayerDamage = 5;
-        }
         
         /*
          * ACTIONS

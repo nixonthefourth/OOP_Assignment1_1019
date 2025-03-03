@@ -84,7 +84,7 @@ namespace DungeonExplorer
             // Create A List Of All Enemies
             List<Enemies> enemyGameList = new List<Enemies>
             {
-                new Enemies("Kevin Jacques",100,80),
+                new Enemies("Kevin Jacques",100,65),
                 new Enemies("Greyhound",100,20),
                 new Enemies("Patrick Bateman",100,30),
                 new Enemies("Biggleswade Skeleton",100,15),

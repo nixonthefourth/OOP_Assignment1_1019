@@ -34,11 +34,10 @@ namespace DungeonExplorer
             }
         }
 
-        // Initialising Adventure
+        // Starting Sequence Of The Adventure
         public void AdventureInit()
         {
             // Intro To The Adventure
-            
             _story.Welcome();
             _story.StartStory();
 
@@ -54,74 +53,89 @@ namespace DungeonExplorer
         private void AdventureLoad(Rooms curentRoom)
         {
             // Select Event In The Game
-            string adventureAction = _story.SetAdventureActions();
-            Helper.DisplayMessage($"Now you are neck deep into {adventureAction} \n \n".ToUpper());
+            _story.SetAdventureActions();
+            
+            // Display Messages
+            Helper.DisplayMessage($"Now you are neck deep into {_story.AdventureActionName} \n \n".ToUpper());
             Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
             Console.ReadLine();
+            
+            // Clear Previous Lines
+            Console.Clear();
 
             // Checks The Action That May Happen In The Selected Adventure Action
             
             // Fight
-            if (adventureAction == _story.AdventureActions[0])
+            if (_story.AdventureActionName == _story.AdventureActions[0])
             {
-                // Clear Previous Lines
-                Console.Clear();
-                
                 // Action Itself
                 EnterFightRoom(curentRoom);
+                
+                // Showing Confirmation Message
+                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+                Console.ReadLine();
+            
+                // Clear Previous Lines
+                Console.Clear();
             }
             
             // Looking For Items
-            else if (adventureAction == _story.AdventureActions[1])
+            else if (_story.AdventureActionName == _story.AdventureActions[1])
             {
-                // Clear Previous Lines
-                Console.Clear();
-
                 // TODO – Add Item Lookup
                 Console.WriteLine("Empty Action \n \n");
+                
+                // Showing Confirmation Message
+                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+                Console.ReadLine();
+            
+                // Clear Previous Lines
+                Console.Clear();
             }
             
             // Looking For Exit
-            else if (adventureAction == _story.AdventureActions[2])
+            else if (_story.AdventureActionName == _story.AdventureActions[2])
             {
+                Console.WriteLine("Empty Action \n \n");
+                
+                // Showing Confirmation Message
+                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+                Console.ReadLine();
+            
                 // Clear Previous Lines
                 Console.Clear();
-                
-                Console.WriteLine("Empty Action \n \n");
             }
             
             // Dwelling
-            else if (adventureAction == _story.AdventureActions[3])
+            else if (_story.AdventureActionName == _story.AdventureActions[3])
             {
-                // Clear Previous Lines
-                Console.Clear();
-                
                 // Call Messages
                 _story.DwellingMessages();
+                
+                // Showing Confirmation Message
+                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+                Console.ReadLine();
+            
+                // Clear Previous Lines
+                Console.Clear();
             }
         }
         
         // Fighting Sequence
         public void FightEncounter(Rooms currentRoom)
         {
-            // Display The Entry Message
-            // Check If The Room Has An Enemy First
-            if (currentRoom.GetRoomEnemy() == null)
-            {
-                Helper.DisplayMessage("Room seems really empty...".ToUpper());
-            }
-
             // Set An Enemy In The Individual Room
             Enemies enemy = currentRoom.GetRoomEnemy();
             Helper.DisplayMessage($"The { enemy.EnemyName } appears \n \n".ToUpper());
 
-            // Checks If Player Has An Item In The Inventory
+            // Checks If Player Has A Weapon In The Inventory
             if (_player.PlayerDamage == 0)
             {
-                _player.SetPlayerDamage();
+                // Setting Damage To 5, So User Doesn't Feel Helpless, If Weapon Wasn't Found Yet
+                _player.PlayerDamage = 5;
             }
             
-            // Set Player's Damage To The Selected Item (Testing Purposes)
+            // Set Player's Damage To The Selected Item (Testing Purposes, Since Item Search Hasn't Been Implemented Yet)
             _player.PickPlayerItem("Sword");
             
             // Fighting Loop
@@ -147,7 +161,7 @@ namespace DungeonExplorer
                     // Enemy's Turn
                     Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
                 
-                    // Assign Player's New Health
+                    // Assign Player's New Health Through Damage
                     _player.SetPlayerHealth(
                         enemy.DamagePlayer(
                             enemy.EnemyDamage, 
@@ -156,6 +170,14 @@ namespace DungeonExplorer
                     );
 
                 }
+                
+                // Action Confirmation
+                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+                Console.ReadLine();
+                
+                // Clear Lines
+                Console.Clear();
+                
                 // Check Whether The Player Is Dead
                 if (_player.PlayerHealth <= 0)
                 {
@@ -169,6 +191,7 @@ namespace DungeonExplorer
         // Enter Fighting Room
         public void EnterFightRoom(Rooms currenRoom)
         {
+            // Generates The Enemy
             currenRoom.GenerateRoomEnemy();
             
             // If There Is An Enemy, Then Start Combat
@@ -177,7 +200,20 @@ namespace DungeonExplorer
                 // Summon The Enemy Message Line
                 _story.EnemyMessage();
                 
+                // Action Confirmation
+                Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
+                Console.ReadLine();
+                
+                // Clear Lines For Future Clarity
+                Console.Clear();
+                
                 FightEncounter(currenRoom);
+            }
+
+            // In case there is no enemy
+            else
+            {
+                Helper.DisplayMessage("There is no enemy, lol!\n \n".ToUpper());
             }
         }
     }

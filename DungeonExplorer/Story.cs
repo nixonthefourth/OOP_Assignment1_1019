@@ -107,14 +107,12 @@ namespace DungeonExplorer
         // GAME SEQUENCES
 
         // Set Adventure Actions
-        public string SetAdventureActions()
+        public void SetAdventureActions()
         {
-            int index = _randomInteger.Next(0, 4);
+            int index = _randomInteger.Next(0, 3);
             
             // Assigns a Random Value For The Action
             AdventureActionName = AdventureActions[index];
-            
-            return AdventureActionName;
         }
         
         // Losing Sequence
@@ -147,7 +145,7 @@ namespace DungeonExplorer
             // Variables
             string messagePattern1 = "Son Of A Bastard! \n";
             string messagePattern2 = "Frenchie! \n";
-            string messagePattern3 = "What a fool to run on skeleton! \n";
+            string messagePattern3 = "What a fool to run on to me! \n";
             string messagePattern4 = "Bare your bones! \n";
             
             // Append An Array
@@ -183,7 +181,7 @@ namespace DungeonExplorer
                 
             // Select The Displayed Message Randomly
             Helper.DisplayMessage(dwellMessage[_randomInteger.Next(dwellMessage.Length)].ToUpper());
-            Helper.DisplayMessage("Press Enter to continue... \n \n");
+            Helper.DisplayMessage("Press Enter to continue... \n \n".ToUpper());
             Console.ReadLine();
         }
     }
