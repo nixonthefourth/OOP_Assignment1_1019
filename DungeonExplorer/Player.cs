@@ -24,14 +24,8 @@ namespace DungeonExplorer
          * METHODS
          */
         
-        /*
-         * GETTERS
-         * GETTERS
-         * GETTERS
-         */
+        // Get Player's Name
         
-        // Name
-        // Get Name
         public string GetCharacterName()
         {
             while (true)
@@ -54,12 +48,6 @@ namespace DungeonExplorer
             // Return
             return PlayerName;
         }
-        
-        /*
-         * ACTIONS
-         * ACTIONS
-         * ACTIONS
-         */
         
         // Damage Enemy
         
@@ -93,7 +81,8 @@ namespace DungeonExplorer
             return enemyHealth;
         }
         
-        // Pick Up An Inventory Item
+        // Pick Up An Inventory Item From The Room
+        
         public void PickPlayerItem(string itemName)
         {
             // Debug
@@ -104,6 +93,7 @@ namespace DungeonExplorer
 
             // Assigning Items
             // Weapons
+            
             // If Sword Is Found
             if (itemName == "Sword")
             {
@@ -119,6 +109,7 @@ namespace DungeonExplorer
             }
             
             // Setting Potions
+            
             // Healing
             else if (itemName == "Cheeky Potion")
             {

@@ -77,37 +77,6 @@ namespace DungeonExplorer
         }
         
         /*
-         * GETTERS
-         * GETTERS
-         * GETTERS
-         */
-        
-        // Weapons
-        
-        // Name
-        public string GetWeaponName()
-        {
-            return WeaponName;
-        }
-        
-        // System Calls
-        
-        // Get Exit Flag
-        public bool AdventureExitFound()
-        {
-            ExitFound = false;
-            return ExitFound;
-        }
-        
-        // Enemies
-        
-        // Retrieve Enemy In The Room
-        public Enemies GetRoomEnemy()
-        {
-            return RoomEnemy;
-        }
-        
-        /*
          * GENERATORS
          * GENERATORS
          * GENERATORS

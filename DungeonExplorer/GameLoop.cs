@@ -14,7 +14,12 @@ namespace DungeonExplorer
         Player _player = new Player();
         private Story _story = new Story();
         
-        // Game Loop
+        /*
+         * GAME LOOP
+         * GAME LOOP
+         * GAME LOOP
+         */
+        
         public void Game()
         {
             // Initialises Adventure
@@ -125,7 +130,7 @@ namespace DungeonExplorer
         public void FightEncounter(Rooms currentRoom)
         {
             // Set An Enemy In The Individual Room
-            Enemies enemy = currentRoom.GetRoomEnemy();
+            Enemies enemy = currentRoom.RoomEnemy;
             Helper.DisplayMessage($"The { enemy.EnemyName } appears \n \n".ToUpper());
 
             // Checks If Player Has A Weapon In The Inventory
@@ -192,7 +197,7 @@ namespace DungeonExplorer
             currenRoom.GenerateRoomEnemy();
             
             // If There Is An Enemy, Then Start Combat
-            if (currenRoom.GetRoomEnemy() != null)
+            if (currenRoom.RoomEnemy != null)
             {
                 // Summon The Enemy Message Line
                 _story.EnemyMessage();
