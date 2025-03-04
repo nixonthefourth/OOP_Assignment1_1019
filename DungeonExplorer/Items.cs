@@ -73,5 +73,4 @@ namespace DungeonExplorer
             return itemGameList[_randomInteger.Next(itemGameList.Count)];
         }
     }
-    
 }

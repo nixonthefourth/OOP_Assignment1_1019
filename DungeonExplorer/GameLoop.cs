@@ -307,5 +307,4 @@ namespace DungeonExplorer
             }
         }
     }
-    
 }

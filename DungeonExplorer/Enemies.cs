@@ -98,5 +98,4 @@ namespace DungeonExplorer
             return enemyGameList[_randomInteger.Next(enemyGameList.Count)];
         }
     }
-    
 }

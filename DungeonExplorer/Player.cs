@@ -83,5 +83,4 @@ namespace DungeonExplorer
             return enemyHealth;
         }
     }
-    
 }

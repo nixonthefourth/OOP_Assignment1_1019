@@ -212,5 +212,4 @@ namespace DungeonExplorer
             Console.Clear();
         }
     }
-    
 }

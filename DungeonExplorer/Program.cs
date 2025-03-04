@@ -27,5 +27,4 @@ namespace DungeonExplorer
             startGame.Game();
         }
     }
-    
 }
