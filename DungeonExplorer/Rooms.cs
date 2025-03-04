@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace DungeonExplorer
 {
     
@@ -62,11 +63,7 @@ namespace DungeonExplorer
             {
                 // Selects The Enemy
                 RoomEnemy = Enemies.SelectEnemy();
-            }
-
-            // The Case, Where Enemy Doesn't Spawn At All
-            else
-            {
+            } else {
                 RoomEnemy = null;
             }
         }
@@ -102,13 +99,10 @@ namespace DungeonExplorer
             if (_randomInteger.Next(0, 10) == 1)
             {
                 RoomExit = true;
-            }
-            
-            // Case Without An Exit
-            else
-            {
+            } else {
                 RoomExit = false;
             }
         }
     }
+    
 }

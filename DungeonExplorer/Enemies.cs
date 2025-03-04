@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace DungeonExplorer
 {
     
@@ -52,10 +53,7 @@ namespace DungeonExplorer
                 
                 // Message
                 Helper.DisplayMessage("That's what you get... Injured! \n \n".ToUpper());
-            }
-
-            else
-            {
+            } else {
                 Helper.DisplayMessage("Enemy's Hit's Missed! \n \n".ToUpper());
             }
             
@@ -100,4 +98,5 @@ namespace DungeonExplorer
             return enemyGameList[_randomInteger.Next(enemyGameList.Count)];
         }
     }
+    
 }

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace DungeonExplorer
 {
     
@@ -44,10 +45,7 @@ namespace DungeonExplorer
                 if (PlayerName.Length == 0 || PlayerName == "" || PlayerName == " ")
                 {
                     Helper.DisplayMessage("Invalid name. \n \n".ToUpper());
-                }
-
-                else
-                {
+                } else {
                     break;
                 }
             }
@@ -71,10 +69,7 @@ namespace DungeonExplorer
                 
                 // Message
                 Helper.DisplayMessage("Enemy Is Injured!! \n \n".ToUpper());
-            }
-
-            else
-            {
+            } else {
                 Helper.DisplayMessage($"{PlayerName}'s Hit Was Missed! \n \n".ToUpper());
             }
 
@@ -88,4 +83,5 @@ namespace DungeonExplorer
             return enemyHealth;
         }
     }
+    
 }

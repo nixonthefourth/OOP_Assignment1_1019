@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace DungeonExplorer
 {
     
@@ -104,16 +105,9 @@ namespace DungeonExplorer
                     // Display
                     RoomMessages();
                     break;
-                }
-            
-                // No Case
-                else if (userResponse == "n")
-                {
+                } else if (userResponse == "n") {
                     break;
-                }
-
-                else
-                {
+                } else {
                     Helper.DisplayMessage("Invalid response. Please try again: ".ToUpper());
                 }
             }
@@ -218,4 +212,5 @@ namespace DungeonExplorer
             Console.Clear();
         }
     }
+    
 }

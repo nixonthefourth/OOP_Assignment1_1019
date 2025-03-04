@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace DungeonExplorer
 {
     
@@ -72,4 +73,5 @@ namespace DungeonExplorer
             return itemGameList[_randomInteger.Next(itemGameList.Count)];
         }
     }
+    
 }

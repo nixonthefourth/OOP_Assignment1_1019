@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace DungeonExplorer
 {
     
@@ -104,31 +105,19 @@ namespace DungeonExplorer
                 
                 // Confirmation Action
                 _story.ConfirmationMessage();
-            }
-            
-            // Looking For Items
-            else if (_story.AdventureActionName == _story.AdventureActions[1])
-            {
+            } else if (_story.AdventureActionName == _story.AdventureActions[1]) {
                 // Item Search
                 ItemFound(curentRoom);
                 
                 // Action Confrimation
                 _story.ConfirmationMessage();
-            }
-            
-            // Looking For Exit
-            else if (_story.AdventureActionName == _story.AdventureActions[2])
-            {
+            } else if (_story.AdventureActionName == _story.AdventureActions[2]) {
                 // Exit Search
                 ExitRoom(curentRoom);
                 
                 // Confirmation Action
                 _story.ConfirmationMessage();
-            }
-            
-            // Dwelling
-            else if (_story.AdventureActionName == _story.AdventureActions[3])
-            {
+            } else if (_story.AdventureActionName == _story.AdventureActions[3]) {
                 // Call Messages
                 _story.DwellingMessages();
                 
@@ -173,11 +162,7 @@ namespace DungeonExplorer
                 {
                     Helper.DisplayMessage("You have defeated the enemy!\n \n".ToUpper());
                     break;
-                }
-
-                // If It Isn't, Then Hit Back
-                else
-                {
+                } else {
                     // Enemy's Turn
                     Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
                 
@@ -225,11 +210,7 @@ namespace DungeonExplorer
                 _story.ConfirmationMessage();
                 
                 FightEncounter(currentRoom);
-            }
-
-            // In case there is no enemy
-            else
-            {
+            } else {
                 Helper.DisplayMessage("There is no enemy, lucky you!\n \n".ToUpper());
             }
         }
@@ -275,11 +256,7 @@ namespace DungeonExplorer
                 
                 // Action Confirmation
                 _story.ConfirmationMessage();
-            }
-
-            // In Case There Is No Item
-            else
-            {
+            } else {
                 Helper.DisplayMessage($"There is no item, tough luck, { _player.PlayerName }.\n \n".ToUpper());
             }
         }
@@ -304,11 +281,7 @@ namespace DungeonExplorer
                 
                 // Action Confirmation Message
                 _story.ConfirmationMessage();
-            }
-
-            // If There Is No Exit
-            else
-            {
+            } else {
                 Helper.DisplayMessage("Well, there is no exit...\n \n".ToUpper());
             }
         }
@@ -334,4 +307,5 @@ namespace DungeonExplorer
             }
         }
     }
+    
 }
