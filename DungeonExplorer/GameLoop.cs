@@ -1,5 +1,3 @@
-using System.Threading.Channels;
-
 namespace DungeonExplorer
 {
     public class GameLoop
@@ -111,7 +109,8 @@ namespace DungeonExplorer
             // Looking For Exit
             else if (_story.AdventureActionName == _story.AdventureActions[2])
             {
-                Console.WriteLine("Empty Action \n \n");
+                // Exit Search
+                ExitRoom(curentRoom);
                 
                 // Confirmation Action
                 _story.ConfirmationMessage();

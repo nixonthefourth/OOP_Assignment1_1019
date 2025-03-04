@@ -171,9 +171,9 @@ namespace DungeonExplorer
         // Room Messages
         public void RoomMessages()
         {
-            string roomMessage1 = "You are walking around dark dungeons of Stevenage \n \n";
-            string roomMessage2 = "Something has creaked... \n \n";
-            string roomMessage3 = "Your wife might call you any time. \n \n";
+            string roomMessage1 = "You are walking around dark dungeons of Stevenage.\n \n";
+            string roomMessage2 = "Something has creaked...\n \n";
+            string roomMessage3 = "This rooms smells like rats in the days of Isaac Newton\n \n";
             
             // Append An Array
             string[] roomMessage = new string[] { roomMessage1, roomMessage2, roomMessage3 };
