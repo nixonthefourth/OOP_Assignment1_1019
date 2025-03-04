@@ -18,6 +18,7 @@ namespace DungeonExplorer
             GameLoop startGame = new GameLoop();
             Testing testingSequence = new Testing();
             
+            
             // Run Test Assertions
             testingSequence.RunPlayerTests();
             testingSequence.RunRoomTests();
