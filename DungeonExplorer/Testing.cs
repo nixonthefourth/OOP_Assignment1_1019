@@ -10,13 +10,23 @@ namespace DungeonExplorer
          * METHODS
          */
         
-        // Run Unified Tests
-        public void RunTests()
+        // Run Unified Tests For Player
+        public void RunPlayerTests()
         {
             // Display Message
             Debug.WriteLine("–––Starting Test Sequence–––");
             
-            // Player Tests
+            // Creates Test Entity Of A Player
+            Player testPlayer = new Player();
+            
+            // Tests Player's Parameters
+            testPlayer.PlayerHealth = 100;
+            testPlayer.PlayerDamage = 40;
+            testPlayer.PlayerInventoryItem = "Axe";
+            
+            // Testing Sequence
+            Debug.Assert(testPlayer.PlayerHealth == 100, "Starting health should be 100.");
+            Debug.Assert(testPlayer.PlayerDamage == 20, "Damage of sword should be 20.");
         }
     }
 }
