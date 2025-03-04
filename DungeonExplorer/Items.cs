@@ -65,7 +65,6 @@ namespace DungeonExplorer
                 new Items("Sword",0,20),
                 new Items("Axe",0,40),
                 new Items("Cheeky Potion",20,0),
-                new Items("Biggleswade Potion",0,20),
             };
             
             // Return Values

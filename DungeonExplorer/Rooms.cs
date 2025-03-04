@@ -95,8 +95,8 @@ namespace DungeonExplorer
         {
             // Generate Exit
 
-            // 1 In 10 Chance Of Exit Appearing In The Room
-            if (_randomInteger.Next(0, 10) == 1)
+            // 1 In 3 Chance Of Exit Appearing In The Room
+            if (_randomInteger.Next(0, 3) == 1)
             {
                 RoomExit = true;
             } else {

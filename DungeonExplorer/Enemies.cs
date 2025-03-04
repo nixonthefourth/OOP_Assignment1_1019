@@ -57,6 +57,12 @@ namespace DungeonExplorer
                 Helper.DisplayMessage("Enemy's Hit's Missed! \n \n".ToUpper());
             }
             
+            // Checks Player's Health
+            if (playerHealth < 0)
+            {
+                playerHealth = 0;
+            }
+            
             // Enter Message
             Helper.DisplayMessage($"Player's Health: {playerHealth} \n \n".ToUpper());
             Helper.DisplayMessage($"Enemy's Health: {enemyHealth} \n \n".ToUpper());

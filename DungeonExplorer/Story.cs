@@ -25,7 +25,7 @@ namespace DungeonExplorer
         // System
         
         // Define A Random Seed
-        Random _randomInteger = new Random();
+        private Random _randomInteger = new Random();
         
         /*
          * STORY START
@@ -137,7 +137,7 @@ namespace DungeonExplorer
             
             // Messages
             Helper.DisplayMessage($"You finished the adventure! \n".ToUpper());
-            Helper.DisplayMessage($"By being killed...".ToUpper());
+            Helper.DisplayMessage($"By being dying...".ToUpper());
             
             // End Suffering
             Environment.Exit(0);

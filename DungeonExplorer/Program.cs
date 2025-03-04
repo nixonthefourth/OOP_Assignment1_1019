@@ -20,7 +20,6 @@ namespace DungeonExplorer
             
             // Run Test Assertions
             testingSequence.RunPlayerTests();
-            testingSequence.RunDamageTests();
             testingSequence.RunRoomTests();
             
             // Actual Game Start

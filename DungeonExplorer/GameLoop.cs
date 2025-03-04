@@ -34,7 +34,6 @@ namespace DungeonExplorer
             AdventureInit();
             
             // Create Rooms
-            
             // Room 1
             Rooms room1 = new Rooms();
             RoomExec(room1);
@@ -91,10 +90,8 @@ namespace DungeonExplorer
             _story.SetAdventureActions();
             
             // Display Messages
-            Helper.DisplayMessage($"Now you are neck deep into {_story.AdventureActionName} \n \n".ToUpper());
+            Helper.DisplayMessage($"Now you are neck deep into {_story.AdventureActionName}...\n \n".ToUpper());
             
-            // Confirmation Action
-            _story.ConfirmationMessage();
             // Checks The Action That May Happen In The Selected Adventure Action
             
             // Fight
@@ -115,7 +112,7 @@ namespace DungeonExplorer
                 // Exit Search
                 ExitRoom(curentRoom);
                 
-                // Confirmation Action
+                // Action Confrimation
                 _story.ConfirmationMessage();
             } else if (_story.AdventureActionName == _story.AdventureActions[3]) {
                 // Call Messages
@@ -143,8 +140,8 @@ namespace DungeonExplorer
             // Checks If Player Has A Weapon In The Inventory
             if (_player.PlayerDamage == 0)
             {
-                // Setting Damage To 5, So User Doesn't Feel Helpless, If Weapon Wasn't Found Yet
-                _player.PlayerDamage = 5;
+                // Setting Damage To 15, So User Doesn't Feel Helpless, If Weapon Wasn't Found Yet
+                _player.PlayerDamage = 15;
             }
             
             // Fighting Loop
@@ -184,8 +181,8 @@ namespace DungeonExplorer
                     // Confirmation Action
                     _story.ConfirmationMessage();
                     
-                    // Finish Game
-                    _story.LoseAdventure();
+                    // Validate Health
+                    HealthValidation();
                     
                     // Break The Loop
                     break;
@@ -212,6 +209,17 @@ namespace DungeonExplorer
                 FightEncounter(currentRoom);
             } else {
                 Helper.DisplayMessage("There is no enemy, lucky you!\n \n".ToUpper());
+            }
+        }
+        
+        // Health Validation
+        // Validates Player's Health In Case Of Value Going Low During Fights
+        public void HealthValidation()
+        {
+            if (_player.PlayerHealth <= 0)
+            {
+                _player.PlayerHealth = 0;
+                _story.LoseAdventure();
             }
         }
         
@@ -247,9 +255,6 @@ namespace DungeonExplorer
                 // Healing
                 _player.PlayerHealth += currentRoom.RoomItem.ItemHeal;
                 
-                // Damaging
-                _player.PlayerHealth -= currentRoom.RoomItem.ItemDamage;
-                
                 // Show Stats
                 Helper.DisplayMessage($"Player's Health: {_player.PlayerHealth} \n" +
                                       $"Player's Damage: {_player.PlayerDamage} \n \n");
@@ -274,7 +279,7 @@ namespace DungeonExplorer
             currentRoom.GenerateRoomExit();
             
             // Check If This Exit Exists
-            if (currentRoom.RoomExit)
+            if (currentRoom.RoomExit == true)
             {
                 // Display Message
                 Helper.DisplayMessage("Exit Found!\n \n".ToUpper());
@@ -283,6 +288,9 @@ namespace DungeonExplorer
                 _story.ConfirmationMessage();
             } else {
                 Helper.DisplayMessage("Well, there is no exit...\n \n".ToUpper());
+                
+                // Confirmation Action
+                _story.ConfirmationMessage();
             }
         }
         
@@ -298,10 +306,16 @@ namespace DungeonExplorer
                 // Load Individual Action In The Room
                 AdventureLoad(currentRoom);
                 
+                // Check Whether Player Is Dead Or Alive
+                HealthValidation();
+                
                 // Check Whether Exit Was Found
-                if (currentRoom.RoomExit)
+                if (currentRoom.RoomExit == true)
                 {
                     Helper.DisplayMessage("Proceeding To The Next Room!\n \n".ToUpper());
+                    
+                    // Confirmation Message
+                    _story.ConfirmationMessage();
                     break;
                 }
             }
