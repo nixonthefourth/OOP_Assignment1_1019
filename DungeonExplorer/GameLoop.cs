@@ -45,6 +45,12 @@ namespace DungeonExplorer
             // Room 5
             Rooms room5 = new Rooms();
             RoomExec(room5);
+
+            // Winning Sequence For Room 5
+            if (room5.RoomExit)
+            {
+                _story.WinAdventure();
+            }
         }
 
         /*
