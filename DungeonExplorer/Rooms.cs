@@ -8,8 +8,7 @@ namespace DungeonExplorer
          * VARIABLES
          */
         
-        // System
-        public bool ExitFound { get; set; }
+        // System Variables
         
         // Randomisation Seed
         private Random _randomInteger = new Random();
@@ -28,14 +27,15 @@ namespace DungeonExplorer
         // Stores An Item In The Individual Room
         public Items RoomItem { get; set; }
         
+        // Exits
+        // Stores An Individual Exit Of The Specific Room
+        public bool RoomExit { get; private set; }
+        
         /*
          * METHODS
          * METHODS
          * METHODS
          */
-        
-        // TODO – Create Method For Room Navigation
-        // TODO – Create Probability Of An Exit Placement (Ignore Complexity Level)
         
         /*
          * GENERATORS
@@ -44,6 +44,7 @@ namespace DungeonExplorer
          */
         
         // Generates A Random Enemy In The Room
+        
         public void GenerateRoomEnemy()
         {
             // Spawn An Enemy
@@ -62,6 +63,7 @@ namespace DungeonExplorer
         }
         
         // Generates A Random Intem In The Room
+        
         public void GenerateRoomItem()
         {
             // Generate An Item
@@ -78,6 +80,25 @@ namespace DungeonExplorer
             else
             {
                 RoomItem = null;
+            }
+        }
+        
+        // Generates A Random Exit In The Room
+
+        public void GenerateRoomExit()
+        {
+            // Generate Exit
+
+            // 1 In 10 Chance Of Exit Appearing In The Room
+            if (_randomInteger.Next(0, 10) == 1)
+            {
+                RoomExit = true;
+            }
+            
+            // Case Without An Exit
+            else
+            {
+                RoomExit = false;
             }
         }
     }

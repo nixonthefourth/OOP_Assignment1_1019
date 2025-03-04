@@ -26,17 +26,25 @@ namespace DungeonExplorer
             AdventureInit();
             
             // Create Rooms
+            // Room 1
             Rooms room1 = new Rooms();
+            RoomExec(room1);
             
-            // Rooms Message
-            _story.GetRoomDescription();
+            // Room 2
+            Rooms room2 = new Rooms();
+            RoomExec(room2);
             
-            // Game Loop
-            while (true)
-            {
-                // Load Individual Action In The Room
-                AdventureLoad(room1);
-            }
+            // Room 3
+            Rooms room3 = new Rooms();
+            RoomExec(room3);
+            
+            // Room 4
+            Rooms room4 = new Rooms();
+            RoomExec(room4);
+            
+            // Room 5
+            Rooms room5 = new Rooms();
+            RoomExec(room5);
         }
 
         /*
@@ -207,7 +215,7 @@ namespace DungeonExplorer
             // In case there is no enemy
             else
             {
-                Helper.DisplayMessage("There is no enemy, lol!\n \n".ToUpper());
+                Helper.DisplayMessage("There is no enemy, lucky you!\n \n".ToUpper());
             }
         }
         
@@ -257,7 +265,57 @@ namespace DungeonExplorer
             // In Case There Is No Item
             else
             {
-                Helper.DisplayMessage("There is no item, lol! \n \n".ToUpper());
+                Helper.DisplayMessage($"There is no item, tough luck, { _player.PlayerName }.\n \n".ToUpper());
+            }
+        }
+        
+        /*
+         * ROOMS
+         * ROOMS
+         * ROOMS
+         */
+        
+        // Exit Search Sequence
+        private void ExitRoom(Rooms currentRoom)
+        {
+            // Generate The Exit
+            currentRoom.GenerateRoomExit();
+            
+            // Check If This Exit Exists
+            if (currentRoom.RoomExit)
+            {
+                // Display Message
+                Helper.DisplayMessage("Exit Found!\n \n".ToUpper());
+                
+                // Action Confirmation Message
+                _story.ConfirmationMessage();
+            }
+
+            // If There Is No Exit
+            else
+            {
+                Helper.DisplayMessage("Well, there is no exit...\n \n".ToUpper());
+            }
+        }
+        
+        // Abstract Room Sequence
+        private void RoomExec(Rooms currentRoom)
+        {
+            // Room's Message
+            _story.GetRoomDescription();
+            
+            // Game Loop For Room
+            while (true)
+            {
+                // Load Individual Action In The Room
+                AdventureLoad(currentRoom);
+                
+                // Check Whether Exit Was Found
+                if (currentRoom.RoomExit)
+                {
+                    Helper.DisplayMessage("Proceeding To The Next Room!\n \n".ToUpper());
+                    break;
+                }
             }
         }
     }
