@@ -18,6 +18,7 @@ namespace DungeonExplorer
          * VARIABLES
          */
         
+        
         // Enemy Stuff
         public string EnemyName { get; set; }
         public int EnemyHealth { get; set; }

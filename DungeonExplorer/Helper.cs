@@ -19,6 +19,7 @@ namespace DungeonExplorer
             {
                 Console.Write(message[i]);
                 System.Threading.Thread.Sleep(30);
+                
             }
         }
     }
