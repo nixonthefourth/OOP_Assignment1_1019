@@ -24,6 +24,7 @@ namespace DungeonExplorer
             AdventureInit();
             
             // Create Rooms
+            
             // Room 1
             Rooms room1 = new Rooms();
             RoomExec(room1);
