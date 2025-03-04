@@ -10,7 +10,8 @@
             
             // Run Test Assertions
             testingSequence.RunPlayerTests();
-            testingSequence.RunyDamageTests();
+            testingSequence.RunDamageTests();
+            testingSequence.RunRoomTests();
             
             // Actual Game Start
             startGame.Game();
