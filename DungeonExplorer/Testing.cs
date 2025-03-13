@@ -13,26 +13,12 @@ namespace DungeonExplorer
     
     public class Testing
     {
-        /*
-         * VARIABLES
-         * VARIABLES
-         * VARIABLES
-         */
-        
-        // Creates Test Entity Of A Player
         private Player _testPlayer = new Player();
-        
-        // Creates Test Entity Of A Room
         private Rooms _testRoom = new Rooms();
         
-        /*
-         * METHODS
-         * METHODS
-         * METHODS
-         */
-        
-        
-        // Run Unified Tests For Player
+        /// <summary>
+        /// Runs tests on the user so we check whether the user was crated correctly, and we check the parameters.
+        /// </summary>
         public void RunPlayerTests()
         {
             // Tests Player's Parameters
@@ -45,15 +31,15 @@ namespace DungeonExplorer
             Debug.Assert(_testPlayer.PlayerDamage != 0, "Player's damage can't be zero.");
         }
         
-        // Test Room Generation Sequence
+        /// <summary>
+        /// Runs the test sequence for the rooms, whether the room has been generated properly.
+        /// </summary>
         public void RunRoomTests()
         {
-            // Generators
             _testRoom.GenerateRoomEnemy();
             _testRoom.GenerateRoomItem();
             _testRoom.GenerateRoomExit();
             
-            // Actual Testing Sequence
             Debug.Assert(_testRoom.RoomExit == true || _testRoom.RoomExit == false, "Room exit generation has failed!");
             Debug.Assert(_testRoom.RoomEnemy == null || _testRoom.RoomEnemy != null, "Enemy generation has failed!");
             Debug.Assert(_testRoom.RoomItem == null || _testRoom.RoomItem != null, "Item generation has failed");
