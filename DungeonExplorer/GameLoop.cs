@@ -12,159 +12,179 @@ namespace DungeonExplorer
     
     public class GameLoop
     {
-        /*
-        There Is 1 Global Player, Hence _player Is Set
-        
-        There Is 1 Related Global Story That Is
-        Referenced Across All The Files, Hence There Is 1 Public instance _story
-        */
+        /// <summary>
+        /// There Is 1 Global Player, Hence _player Is Set
+        /// There Is 1 Related Global Story That Is
+        /// Referenced Across All The Files, Hence There Is 1 Public instance _story
+        /// </summary>
         
         private Player _player = new Player();
         private Story _story = new Story();
         
-        /*
-         * GAME LOOP
-         * GAME LOOP
-         * GAME LOOP
-         */
+        /// <summary>
+        /// Game Loop Method
+        /// Doesn't take any arguments neither does return any of the data.
+        /// Initialises adventure, creates game loop sequence based off of rooms and checks for win in the last room.
+        /// </summary>
         
         
         public void Game()
         {
-            // Initialises Adventure
+            /// <remarks>
+            /// Initialises Adventure
+            /// </remarks>
             AdventureInit();
             
-            // Create Rooms
-            // Room 1
+            /// <remarks>
+            /// Creares room objects
+            /// </remarks>
             Rooms room1 = new Rooms();
             RoomExec(room1);
             
-            // Room 2
             Rooms room2 = new Rooms();
             RoomExec(room2);
             
-            // Room 3
             Rooms room3 = new Rooms();
             RoomExec(room3);
             
-            // Room 4
             Rooms room4 = new Rooms();
             RoomExec(room4);
             
-            // Room 5
             Rooms room5 = new Rooms();
             RoomExec(room5);
 
-            // Winning Sequence For Room 5
+            /// <remarks>
+            /// Check whether user has won the adventure by finding the exit in the last room
+            /// </remarks>
             if (room5.RoomExit)
             {
                 _story.WinAdventure();
             }
         }
 
-        /*
-         * STORY SEQUENCE
-         * STORY SEQUENCE
-         * STORY SEQUENCE
-         */
+        /// <summary>
+        /// Creates the story sequence inside of the game.
+        /// We meed to initialise adventure as well as load it.
+        /// </summary>
         
-        // Initialise Adventure
+        /// <remarks>
+        /// Initialises the adventure.
+        /// Runs the story lines first,
+        /// Get player's character name,
+        /// Confirm name and assign health.
+        /// </remarks>
         private void AdventureInit()
         {
-            // Intro To The Adventure
+            /// <remarks>
+            /// Start story
+            /// </remarks>
             _story.Welcome();
             _story.StartStory();
 
-            // Confirm Character's Name
+            /// <remarks>
+            /// Enter player's cahracter name,
+            /// And confirm it.
             string characterName = _player.GetCharacterName();
             _story.CharacterNameConfirmation(characterName);
             
-            // Set Player's Starting Health
             _player.PlayerHealth = 100;
         }
 
-        // Loads The Adventure Into Code, So It's Selected Later
-        
+        /// <summary>
+        /// Loads current adventure that user is about to take.
+        /// Action is generated outside elsewhere in the Story.cs class,
+        /// Hence this method selects the randomly generated action.
+        /// </summary>
+        /// <param name="curentRoom">
+        /// Assigns the room to the current parameter of the method, so the adventure is applied to the right room.
+        /// </param>
         private void AdventureLoad(Rooms curentRoom)
         {
-            // Select Event In The Game
+            /// <remarks>
+            /// Setting the adventure actions from Story.cs by applying object of _story.
+            /// </remarks>
             _story.SetAdventureActions();
             
-            // Display Messages
             Helper.DisplayMessage($"Now you are neck deep into {_story.AdventureActionName}...\n \n".ToUpper());
             
-            // Checks The Action That May Happen In The Selected Adventure Action
-            
-            // Fight
+            /// <remarks>
+            /// Selects the random action generated in the story file.
+            /// Chooses fighting, item search, exit search and dwelling sequences respectively.
+            /// </remarks>
             if (_story.AdventureActionName == _story.AdventureActions[0])
             {
-                // Action Itself
                 EnterFight(curentRoom);
-                
-                // Confirmation Action
-                _story.ConfirmationMessage();
             } else if (_story.AdventureActionName == _story.AdventureActions[1]) {
-                // Item Search
                 ItemFound(curentRoom);
-                
-                // Action Confrimation
-                _story.ConfirmationMessage();
             } else if (_story.AdventureActionName == _story.AdventureActions[2]) {
-                // Exit Search
                 ExitRoom(curentRoom);
-                
-                // Action Confrimation
-                _story.ConfirmationMessage();
             } else if (_story.AdventureActionName == _story.AdventureActions[3]) {
-                // Call Messages
                 _story.DwellingMessages();
-                
-                // Confirmation Action
-                _story.ConfirmationMessage();
             }
         }
         
-        /*
-         * FIGHT
-         * FIGHT
-         * FIGHT
-         */
-        
-        // Fighting Sequence
-        
+        /// <summary>
+        /// Creates the fighting sequence between the player and randomly selected enemy.
+        /// </summary>
+        /// <param name="currentRoom">
+        /// Passes the room where the encounter happens
+        /// </param>
+        /// <remarks>
+        /// Enemy is assigned to the room where the player is,
+        /// And a following message appears in case there is an enemy in the room.
+        /// Then player is checked for the damage he has, hence we set the damage to 15 if the item slot is empty.
+        /// After checks are complete, we enter the fighting loop, where we use turn-based system for the fight.
+        /// Status of health of both player and enemy are displayed.
+        /// </remarks>
         private void FightEncounter(Rooms currentRoom)
         {
-            // Set An Enemy In The Individual Room
+            /// <remarks>
+            /// Sets the individual enemy.
+            /// </remarks>
             Enemies enemy = currentRoom.RoomEnemy;
             Helper.DisplayMessage($"The { enemy.EnemyName } appears \n \n".ToUpper());
 
-            // Checks If Player Has A Weapon In The Inventory
+            /// <remarks>
+            /// Checks whether player has a weapon,
+            /// If he doesn't, then we set it to basic 15 units of damage.
+            /// </remarks>
             if (_player.PlayerDamage == 0)
             {
-                // Setting Damage To 15, So User Doesn't Feel Helpless, If Weapon Wasn't Found Yet
                 _player.PlayerDamage = 15;
             }
             
-            // Fighting Loop
+            /// <remarks>
+            /// Fighting Loop
+            /// </remarks>
             while (true)
             {
-                // Player's Turn
+                /// <remarks>
+                /// Player's turn, where player is announced and enemy is damaged. Then we check for enemy's death.
+                /// </remarks>
                 Helper.DisplayMessage($"{_player.PlayerName}'s turn! Press Enter to attack!\n \n".ToUpper());
                 Console.ReadLine();
                 
-                // Damages Enemy
                 enemy.EnemyHealth = _player.DamageEnemy(enemy.EnemyHealth, _player.PlayerDamage);
 
-                // Check Whether Enemy Is Dead
                 if (enemy.EnemyHealth <= 0)
                 {
                     Helper.DisplayMessage("You have defeated the enemy!\n \n".ToUpper());
                     break;
                 } else {
-                    // Enemy's Turn
+                    /// <remarks>
+                    /// In case enemy is still alive, return the damage
+                    /// </remarks>
                     Helper.DisplayMessage("Enemy's turn...\n \n".ToUpper());
                 
-                    // Assign Player's New Health Through Damage
+                    /// <remarks>
+                    /// New health is assigned to the player through enemy's damage.
+                    /// health is validate in case player's health goes below 0 and then we kill him later.
+                    /// </remarks>
+                    /// <param>
+                    /// enemy.EnemyDamage,
+                    /// _player.PlayerHealth,
+                    /// enemy.EnemyHealth
+                    /// </param>
                     _player.PlayerHealth = enemy.DamagePlayer(
                         enemy.EnemyDamage,
                         _player.PlayerHealth,
@@ -179,19 +199,20 @@ namespace DungeonExplorer
                 {
                     Helper.DisplayMessage("You have been defeated!\n \n".ToUpper());
                     
-                    // Confirmation Action
                     _story.ConfirmationMessage();
                     
-                    // Validate Health
                     HealthValidation();
                     
-                    // Break The Loop
                     break;
                 }
             }
         }
         
-        // Enter Fighting Mode Inside The Room
+        /// <summary>
+        /// Generates the enemy in the room and checks whether enemy is present in the room in the first place.
+        /// In case it is, then combat starts.
+        /// </summary>
+        /// <param name="currentRoom">currentRoom is passes in order to define the room we are about to use.</param>
         
         private void EnterFight(Rooms currentRoom)
         {
@@ -213,8 +234,11 @@ namespace DungeonExplorer
             }
         }
         
-        // Health Validation
-        // Validates Player's Health In Case Of Value Going Low During Fights
+        /// <summary>
+        /// We are validating the health of the player in order to check whether player is dead or alive.
+        /// In case of going below 0 health-wise, we are making it equal to 0, so bugs are prevented.
+        /// And then player is killed.
+        /// </summary>
         public void HealthValidation()
         {
             if (_player.PlayerHealth <= 0)
@@ -224,98 +248,76 @@ namespace DungeonExplorer
             }
         }
         
-        /*
-         * INVENTORY & ITEMS
-         * INVENTORY & ITEMS
-         * INVENTORY & ITEMS
-         */
-        
-        // Item Search Action
+        /// <summary>
+        /// Works on the items, where we are looking for the items by generating randomly an item in the room.
+        /// When new item is picked up, status is updated.
+        /// </summary>
+        /// <param name="currentRoom">currentRoom is passes in order to define the room we are about to use.</param>
         private void ItemFound(Rooms currentRoom)
         {
-            // Generate Item In The Room
             currentRoom.GenerateRoomItem();
             
-            // Check Whether It Exists
-            // If It Does, Pick Up
             if (currentRoom.RoomItem != null)
             {
-                // Display a Message
                 Helper.DisplayMessage("Item found! \n".ToUpper());
                 Helper.DisplayMessage($"It's {currentRoom.RoomItem.ItemName} \n \n".ToUpper());
                 
-                // Item Assignment To Player
-                
-                // Assign Damage
                 _player.PlayerDamage = currentRoom.RoomItem.ItemDamage;
                 
-                // Assign Item's Name
                 _player.PlayerInventoryItem = currentRoom.RoomItem.ItemName;
                 
-                // Assign New Player Health (If Applicable)
-                // Healing
                 _player.PlayerHealth += currentRoom.RoomItem.ItemHeal;
                 
-                // Show Stats
                 Helper.DisplayMessage($"Player's Health: {_player.PlayerHealth} \n" +
                                       $"Player's Damage: {_player.PlayerDamage} \n \n");
                 
-                // Action Confirmation
                 _story.ConfirmationMessage();
             } else {
                 Helper.DisplayMessage($"There is no item, tough luck, { _player.PlayerName }.\n \n".ToUpper());
             }
         }
         
-        /*
-         * ROOMS
-         * ROOMS
-         * ROOMS
-         */
-        
-        // Exit Search Sequence
+        /// <summary>
+        /// Works on the room sequences.
+        /// We are creating the exits in the room. In case there is, we show that it is found.
+        /// And if there's none, then the following message is displayed.
+        /// </summary>
+        /// <param name="currentRoom">currentRoom is passes in order to define the room we are about to use.</param>
         private void ExitRoom(Rooms currentRoom)
         {
-            // Generate The Exit
             currentRoom.GenerateRoomExit();
             
-            // Check If This Exit Exists
             if (currentRoom.RoomExit == true)
             {
-                // Display Message
                 Helper.DisplayMessage("Exit Found!\n \n".ToUpper());
                 
-                // Action Confirmation Message
                 _story.ConfirmationMessage();
             } else {
                 Helper.DisplayMessage("Well, there is no exit...\n \n".ToUpper());
                 
-                // Confirmation Action
                 _story.ConfirmationMessage();
             }
         }
         
-        // Abstract Room Sequence
+        /// <summary>
+        /// Execute the room sequence, by loading the adventure, checking the health in a loop and then check for win.
+        /// </summary>
+        /// <param name="currentRoom">currentRoom is passes in order to define the room we are about to use.</param>
         private void RoomExec(Rooms currentRoom)
         {
             // Room's Message
             _story.GetRoomDescription();
             
-            // Game Loop For Room
             while (true)
             {
-                // Load Individual Action In The Room
                 AdventureLoad(currentRoom);
                 
-                // Check Whether Player Is Dead Or Alive
                 HealthValidation();
                 
-                // Check Whether Exit Was Found
                 if (currentRoom.RoomExit == true)
                 {
                     Helper.DisplayMessage("Proceeding To The Next Room!\n \n".ToUpper());
                     
-                    // Confirmation Message
                     _story.ConfirmationMessage();
                     break;
                 }

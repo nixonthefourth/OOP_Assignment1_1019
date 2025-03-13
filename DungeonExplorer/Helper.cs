@@ -12,7 +12,10 @@ namespace DungeonExplorer
     
     public class Helper
     {
-        // Typewriter Visual
+        /// <summary>
+        /// Displays the chosen strings into the console using terminal visuals.
+        /// </summary>
+        /// <param name="message"></param>
         public static void DisplayMessage(string message)
         {
             for (int i = 0; i < message.Length; i++)

@@ -12,18 +12,28 @@ namespace DungeonExplorer
     
     class Program
     {
+        /// <summary>
+        ///  Entry point that initialises program with the game loop and testing.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            // Create Main Classes For Game & Testing
+            /// <remarks>
+            /// Define objects of the game loop and testing prior to the game loop
+            /// </remarks>
             GameLoop startGame = new GameLoop();
             Testing testingSequence = new Testing();
             
             
-            // Run Test Assertions
+            /// <remarks>
+            /// Run test sequences
+            /// </remarks>
             testingSequence.RunPlayerTests();
             testingSequence.RunRoomTests();
             
-            // Actual Game Start
+            /// <remarks>
+            /// Actual game start
+            /// </remarks>
             startGame.Game();
         }
     }

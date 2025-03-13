@@ -12,34 +12,22 @@ namespace DungeonExplorer
     
     public class Player
     {
-        /*
-         * VARIABLES
-         * VARIABLES
-         * VARIABLES
-         */
-        
-        
         public string PlayerName { get; private set; }
         public int PlayerHealth { get; set; }
         public int PlayerDamage { get; set; }
         public string PlayerInventoryItem { get; set; }
-        
-        // Generates Random Seed
         private Random _randomInteger = new Random();
         
-        /*
-         * METHODS
-         * METHODS
-         * METHODS
-         */
-        
-        // Get Player's Name
-        
+        /// <summary>
+        /// Get Player's Name and check for the errors.
+        /// </summary>
+        /// <returns>
+        /// Returns the value of the username.
+        /// </returns>
         public string GetCharacterName()
         {
             while (true)
             {
-                // Gets user's name
                 Helper.DisplayMessage("Enter your name, mighty warrior: ".ToUpper());
                 PlayerName = Console.ReadLine();
 
@@ -51,21 +39,23 @@ namespace DungeonExplorer
                 }
             }
             
-            // Return
             return PlayerName;
         }
-        
-        // Damage Enemy
-        
+        /// <summary>
+        /// Damage Enemy
+        /// </summary>
+        /// <param name="enemyHealth">Health of the enemy</param>
+        /// <param name="playerDamage">Damage that player deals</param>
+        /// <returns>Health of enemy using enemyHealth</returns>
+        /// <remarks>
+        /// Assigns The Probability Of Damaging Someone
+        /// If It's Less Than 10 And More Than 3, Then Enemy Receieves The Damage
+        /// </remarks>
         public int DamageEnemy(int enemyHealth, int playerDamage)
         {
             int randomValue = _randomInteger.Next(0, 10);
-            
-            // Assigns The Probability Of Damaging Someone
-            // If It's Less Than 100 And More Than 3, Then Enemy Receieves The Damage
             if (randomValue >= 3)
             {
-                // Takes Away User's Health
                 enemyHealth -= playerDamage;
                 
                 // Message
@@ -74,13 +64,11 @@ namespace DungeonExplorer
                 Helper.DisplayMessage($"{PlayerName}'s Hit Was Missed! \n \n".ToUpper());
             }
 
-            // Checks Whether Enemy Is Alive
             if (enemyHealth <= 0)
             {
                 Helper.DisplayMessage("Enemy is dead! \n \n".ToUpper());
             }
             
-            // Returns Enemy's Health
             return enemyHealth;
         }
     }

@@ -12,91 +12,52 @@ namespace DungeonExplorer
     
     public class Rooms
     {
-        /*
-         * VARIABLES
-         * VARIABLES
-         * VARIABLES
-         */
-        
-        // System Variables
-        
-        // Randomisation Seed
         private Random _randomInteger = new Random();
-        
-        // Weapons
         public string WeaponName { get; set; }
-        
-        // Potions
         public string PotionName { get; set; }
-        
-        // Enemies
-        // Stores An Enemy In The Individual Room
         public Enemies RoomEnemy { get; set; }
-        
-        // Items
-        // Stores An Item In The Individual Room
         public Items RoomItem { get; set; }
-        
-        // Exits
-        // Stores An Individual Exit Of The Specific Room
         public bool RoomExit { get; private set; }
         
-        /*
-         * METHODS
-         * METHODS
-         * METHODS
-         */
-        
-        /*
-         * GENERATORS
-         * GENERATORS
-         * GENERATORS
-         */
-        
-        
-        // Generates A Random Enemy In The Room
-        
+        /// <summary>
+        /// Generates the random enemy in the room from a predefined list of enemies in Enemies.cs.
+        /// </summary>
+        /// <remarks>
+        /// Spawns An Enemy
+        /// 50% Chance Of The Event. 0 To 100 Would Be A Mess From A Mathematical Perspective. Email Me For Proof.
+        /// </remarks>
         public void GenerateRoomEnemy()
         {
-            // Spawn An Enemy
-            // 50% Chance Of The Event. 0 To 100 Would Be A Mess From A Mathematical Perspective. Email Me For Proof.
             if (_randomInteger.Next(0, 2) == 1)
             {
-                // Selects The Enemy
                 RoomEnemy = Enemies.SelectEnemy();
             } else {
                 RoomEnemy = null;
             }
         }
-        
-        // Generates A Random Intem In The Room
-        
+        /// <summary>
+        /// Generates the item in the room randomly.
+        /// </summary>
+        /// <remarks>
+        /// 50% Chance Of The Event Happening.
+        /// 0 To 100 Would Be A Mess From A Mathematical Perspective. Email Me For Proof.
+        /// If there is an item, the alue is assigned, otherwise value is set to null.
+        /// </remarks>
         public void GenerateRoomItem()
         {
-            // Generate An Item
-            
-            // 50% Chance Of The Event Happening.
-            // 0 To 100 Would Be A Mess From A Mathematical Perspective. Email Me For Proof.
             if (_randomInteger.Next(0, 2) == 1)
             {
-                // Selects The Enemy
                 RoomItem = Items.SelectItem();
-            }
-
-            // The Case, Where Item Doesn't Spawn At All
-            else
-            {
+            } else {
                 RoomItem = null;
             }
         }
-        
-        // Generates A Random Exit In The Room
-
+        /// <summary>
+        /// Generates A Random Exit In The Room.
+        /// 1 In 3 Chance Of Exit Appearing In The Room
+        /// </summary>
         public void GenerateRoomExit()
         {
-            // Generate Exit
-
-            // 1 In 3 Chance Of Exit Appearing In The Room
             if (_randomInteger.Next(0, 3) == 1)
             {
                 RoomExit = true;
